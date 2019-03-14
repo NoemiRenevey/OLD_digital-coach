@@ -67,6 +67,15 @@ module.exports = {
                 name: `articles`,
             },
         },
+        // Setup for authors
+        // See https://www.gatsbyjs.org/docs/gatsby-config/#mapping-node-types
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: path.join(__dirname, `src`, `authors`),
+                name: `authors`,
+            },
+        },
         `gatsby-transformer-remark`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
@@ -196,4 +205,7 @@ module.exports = {
         `gatsby-plugin-force-trailing-slashes`,
         `gatsby-plugin-offline`,
     ],
+    mapping: {
+        'MarkdownRemark.frontmatter.author': `MarkdownRemark.frontmatter.author_id`,
+    },
 }

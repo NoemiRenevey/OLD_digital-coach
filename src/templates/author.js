@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
@@ -18,7 +18,7 @@ const Author = ({ data, location, pageContext }) => {
     const facebookUrl = author.facebook ? `https://www.facebook.com/${author.facebook.replace(/^\//, ``)}` : null
 
     return (
-        <>
+        <Fragment>
             <MetaData
                 data={data}
                 location={location}
@@ -49,7 +49,7 @@ const Author = ({ data, location, pageContext }) => {
                     <Pagination pageContext={pageContext} />
                 </div>
             </Layout>
-        </>
+        </Fragment>
     )
 }
 

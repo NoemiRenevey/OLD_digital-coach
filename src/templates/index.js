@@ -48,7 +48,9 @@ export default Index
 
 export const pageQuery = graphql`
     query MarkdownArticlesQuery {
-        allMarkdownRemark {
+        allMarkdownRemark(filter: {
+            fileAbsolutePath: {regex : "\/articles/"}
+        }) {
             edges {
                 node {
                     frontmatter {
@@ -58,9 +60,14 @@ export const pageQuery = graphql`
                         desc
                         featured_image {
                             childImageSharp {
-                              fixed(width: 700) {
+                              fixed(width: 300) {
                                 src
                               }
+                            }
+                        }
+                        author {
+                            frontmatter {
+                              author_id
                             }
                         }
                     }

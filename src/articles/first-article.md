@@ -4,6 +4,7 @@ date: "2017-11-07"
 title: "My first blog post"
 desc: "Just a small description for the faint-hearted"
 featured_image: "./img/sony-alpha-7.jpeg"
+author: Lyketil
 ---
 
 # Blablabla
