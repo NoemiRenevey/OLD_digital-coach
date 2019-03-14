@@ -20,8 +20,8 @@ import '../../styles/app.css'
 */
 const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const site = data.site.siteMetadata
-    const twitter = site.twitterUrl ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
-    const facebook = site.facebookUrl ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
+    const twitter = site.twitterUrl
+    const facebook = site.facebookUrl
 
     return (
         <Fragment>
@@ -46,8 +46,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </Link>
                                 </div>
                                 <div className="site-mast-right">
-                                    { site.twitter && <a href={ twitter } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/twitter.svg" alt="Twitter" /></a>}
-                                    { site.facebook && <a href={ facebook } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/facebook.svg" alt="Facebook" /></a>}
+                                    {console.log("twi", twitter)}
+                                    { twitter && <a href={ twitter } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/twitter.svg" alt="Twitter" /></a>}
+                                    { facebook && <a href={ facebook } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/facebook.svg" alt="Facebook" /></a>}
                                     <a className="site-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/rss.svg" alt="RSS Feed" /></a>
                                 </div>
                             </div>
@@ -84,7 +85,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 <Link to="/">{site.title}</Link> © 2019 &mdash; Published with <a className="site-foot-nav-item" href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a>
                             </div>
                             <div className="site-foot-nav-right">
-                                {console.log('Nav:', site.navigation)}
                                 <Navigation data={site.navigation} navClass="site-foot-nav-item" />
                             </div>
                         </div>

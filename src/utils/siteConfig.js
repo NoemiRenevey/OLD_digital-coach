@@ -1,8 +1,8 @@
 module.exports = {
     siteUrl: `https://gatsby.ghost.org`, // Site domain. Do not include a trailing slash!
 
-    facebookUrl: ``,
-    twitterUrl: ``,
+    facebookUrl: `https://www.facebook.com/lyketil`,
+    twitterUrl: `https://twitter.com/lyketil`,
     instagramUrl: ``,
 
     navigation: [
