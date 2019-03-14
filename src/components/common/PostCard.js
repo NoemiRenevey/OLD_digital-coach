@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 // import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
 const PostCard = ({ post }) => {
-    const url = `/${post.slug}/`
+    const url = `/${post.frontmatter.slug}/`
     const author = post.frontmatter.author.frontmatter.author_id ? post.frontmatter.author.frontmatter.author_id : "Lyketil" 
     // const readingTime = readingTimeHelper(post)
 
