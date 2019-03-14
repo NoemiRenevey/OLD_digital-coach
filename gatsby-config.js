@@ -32,6 +32,11 @@ try {
 module.exports = {
     siteMetadata: {
         siteUrl: config.siteUrl,
+        siteTitle: config.siteTitleMeta,
+        siteDesc: config.siteDescriptionMeta,
+        facebookUrl: config.facebookUrl,
+        twitterUrl: config.twitterUrl,
+        navigation: config.navigation,
     },
     plugins: [
         /**
