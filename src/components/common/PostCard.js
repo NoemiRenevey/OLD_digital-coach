@@ -7,6 +7,7 @@ import { Link } from 'gatsby'
 const PostCard = ({ post }) => {
     const url = `/${post.frontmatter.slug}/`
     const author = post.frontmatter.author.frontmatter.author_id ? post.frontmatter.author.frontmatter.author_id : "Lyketil" 
+    const authorSlug = post.frontmatter.author.frontmatter.slug
     // const readingTime = readingTimeHelper(post)
 
     return (
@@ -26,7 +27,7 @@ const PostCard = ({ post }) => {
                     <div className="post-card-avatar">
                         <img className="author-profile-image" src="https://via.placeholder.com/300" alt=""/>
                     </div>
-                    {author && <span>{author}</span>}
+                    {author && <span><Link to={`/${authorSlug}`}>{author}</Link></span>}
                 </div>
                 <div className="post-card-footer-right">
                     <div>2min</div>

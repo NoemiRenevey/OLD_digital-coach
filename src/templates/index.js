@@ -68,6 +68,7 @@ export const pageQuery = graphql`
                         author {
                             frontmatter {
                               author_id
+                              slug
                             }
                         }
                     }
