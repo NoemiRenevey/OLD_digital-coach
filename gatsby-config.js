@@ -53,6 +53,16 @@ module.exports = {
                 name: `images`,
             },
         },
+        // Setup for markdown posts
+        // See https://www.gatsbyjs.org/docs/adding-markdown-pages/
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: path.join(__dirname, `src`, `articles`),
+                name: `articles`,
+            },
+        },
+        `gatsby-transformer-remark`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
         {
