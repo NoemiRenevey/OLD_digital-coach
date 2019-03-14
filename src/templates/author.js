@@ -16,6 +16,8 @@ const Author = ({ data, location, pageContext }) => {
     // const posts = data.allGhostPost.edges
     const twitterUrl = author.twitter ? `https://twitter.com/${author.twitter.replace(/^@/, ``)}` : null
     const facebookUrl = author.facebook ? `https://www.facebook.com/${author.facebook.replace(/^\//, ``)}` : null
+    console.log('Author', author)
+    const profileImage = author.avatar.childImageSharp.fixed.src
 
     return (
         <Fragment>
@@ -28,7 +30,7 @@ const Author = ({ data, location, pageContext }) => {
                 <div className="container">
                     <header className="author-header">
                         <div className="author-header-content">
-                            <h1>{author.name}</h1>
+                            <h1>{author.author_id}</h1>
                             {author.bio && <p>{author.bio}</p>}
                             <div className="author-header-meta">
                                 {author.website && <a className="author-header-item" href={author.website} target="_blank" rel="noopener noreferrer">Website</a>}
@@ -37,7 +39,7 @@ const Author = ({ data, location, pageContext }) => {
                             </div>
                         </div>
                         <div className="author-header-image">
-                            {author.profile_image && <img src={author.profile_image} alt={author.name} />}
+                            {profileImage && <img src={profileImage} alt={author.author_id} />}
                         </div>
                     </header>
                     {/*
@@ -78,13 +80,23 @@ export default Author
 
 export const pageQuery = graphql`
 query authorArticlesQuery($author: String) {
-    allMarkdownRemark(filter: {frontmatter: {author: {eq: $author}}, fileAbsolutePath: {regex: "\/articles/"}}) {
+    allMarkdownRemark(filter: {frontmatter: {author: {eq: $author}}, fileAbsolutePath: {regex: "\/authors/"}}) {
         edges {
             node {
                 frontmatter {
-                title
-                slug 
+                    author_id
+                    slug
+                    twitter
+                    facebook
+                    avatar {
+                        childImageSharp {
+                          fixed(width: 200) {
+                            src
+                          }
+                        }
+                    }
                 }
+                html
             }
         }
     }

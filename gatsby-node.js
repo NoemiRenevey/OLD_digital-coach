@@ -165,6 +165,7 @@ exports.createPages = ({ graphql, actions }) => {
                   filter: {fileAbsolutePath: {regex: "/authors/"}},
                   sort: {order: ASC, fields: frontmatter___author_id},
                 ) {
+                  totalCount
                   edges {
                     node {
                       frontmatter {
@@ -188,7 +189,7 @@ exports.createPages = ({ graphql, actions }) => {
                 const postsPerPage = config.postsPerPage
 
                 _.forEach(items, ({ node }) => {
-                    const totalPosts = node.postCount !== null ? node.postCount : 0
+                    const totalPosts = result.data.allMarkdownRemark.totalCount !== null ? result.data.allMarkdownRemark.totalCount : 0
                     const numberOfPages = Math.ceil(totalPosts / postsPerPage)
 
                     // This part here defines, that our author pages will use
@@ -226,59 +227,5 @@ exports.createPages = ({ graphql, actions }) => {
         )
     })
 
-    /**
-    * Pages
-    */
-    const createPages = new Promise((resolve, reject) => {
-        const pageTemplate = path.resolve(`./src/templates/page.js`)
-        resolve(
-            graphql(`
-                {
-                    allGhostPage(
-                        sort: {order: ASC, fields: published_at},
-                        filter: {
-                            slug: {ne: "data-schema-page"}
-                        }
-                    ) {
-                        edges {
-                            node {
-                                slug
-                                url
-                            }
-                        }
-                    }
-                }`
-            ).then((result) => {
-                if (result.errors) {
-                    return reject(result.errors)
-                }
-
-                if (!result.data.allGhostPage) {
-                    return resolve()
-                }
-
-                const items = result.data.allGhostPage.edges
-
-                _.forEach(items, ({ node }) => {
-                    // This part here defines, that our pages will use
-                    // a `/:slug/` permalink.
-                    node.url = `/${node.slug}/`
-
-                    createPage({
-                        path: node.url,
-                        component: path.resolve(pageTemplate),
-                        context: {
-                            // Data passed to context is available
-                            // in page queries as GraphQL variables.
-                            slug: node.slug,
-                        },
-                    })
-                })
-
-                return resolve()
-            })
-        )
-    })
-
-    return Promise.all([createPosts, createTags, createAuthors, createPages])
+    return Promise.all([createPosts, createTags, createAuthors])
 }
