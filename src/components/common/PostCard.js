@@ -27,7 +27,7 @@ const PostCard = ({ post }) => {
                     <div className="post-card-avatar">
                         <img className="author-profile-image" src="https://via.placeholder.com/300" alt=""/>
                     </div>
-                    {author && <span><Link to={`/${authorSlug}`}>{author}</Link></span>}
+                    {author && <span><Link to={`/author/${authorSlug}`}>{author}</Link></span>}
                 </div>
                 <div className="post-card-footer-right">
                     <div>2min</div>

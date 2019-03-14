@@ -19,35 +19,33 @@ exports.createPages = ({ graphql, actions }) => {
         const indexTemplate = path.resolve(`./src/templates/index.js`)
         resolve(
             graphql(`
-                {
-                    allGhostPost(
-                        sort: {order: ASC, fields: published_at},
-                        filter: {
-                            slug: {ne: "data-schema"}
-                        }
-                    ) {
-                        edges {
-                            node {
-                                slug
-                            }
-                        }
+              query allArticles {
+                allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/article/"}}) {
+                  edges {
+                    node {
+                      frontmatter {
+                        title
+                        slug
+                      }
                     }
-                }`
+                  }
+                }
+              }`
             ).then((result) => {
                 if (result.errors) {
                     return reject(result.errors)
                 }
 
-                if (!result.data.allGhostPost) {
+                if (!result.data.allMarkdownRemark) {
                     return resolve()
                 }
 
-                const items = result.data.allGhostPost.edges
+                const items = result.data.allMarkdownRemark.edges
 
                 _.forEach(items, ({ node }) => {
                     // This part here defines, that our posts will use
                     // a `/:slug/` permalink.
-                    node.url = `/${node.slug}/`
+                    node.url = `/${node.frontmatter.slug}/`
 
                     createPage({
                         path: node.url,
@@ -55,7 +53,7 @@ exports.createPages = ({ graphql, actions }) => {
                         context: {
                             // Data passed to context is available
                             // in page queries as GraphQL variables.
-                            slug: node.slug,
+                            slug: node.frontmatter.slug,
                         },
                     })
                 })
@@ -162,32 +160,31 @@ exports.createPages = ({ graphql, actions }) => {
         const authorTemplate = path.resolve(`./src/templates/author.js`)
         resolve(
             graphql(`
-                {
-                    allGhostAuthor(
-                        sort: {order: ASC, fields: name},
-                        filter: {
-                            slug: {ne: "data-schema-author"}
-                        }
-                    ) {
-                        edges {
-                            node {
-                                slug
-                                url
-                                postCount
-                            }
-                        }
+              query allAuthors {
+                allMarkdownRemark(
+                  filter: {fileAbsolutePath: {regex: "/authors/"}},
+                  sort: {order: ASC, fields: frontmatter___author_id},
+                ) {
+                  edges {
+                    node {
+                      frontmatter {
+                        slug
+                        author_id
+                      }
                     }
-                }`
+                  }
+                }
+              }`
             ).then((result) => {
                 if (result.errors) {
                     return reject(result.errors)
                 }
 
-                if (!result.data.allGhostAuthor) {
+                if (!result.data.allMarkdownRemark) {
                     return resolve()
                 }
 
-                const items = result.data.allGhostAuthor.edges
+                const items = result.data.allMarkdownRemark.edges
                 const postsPerPage = config.postsPerPage
 
                 _.forEach(items, ({ node }) => {
@@ -196,7 +193,7 @@ exports.createPages = ({ graphql, actions }) => {
 
                     // This part here defines, that our author pages will use
                     // a `/author/:slug/` permalink.
-                    node.url = `/author/${node.slug}/`
+                    node.url = `/author/${node.frontmatter.slug}/`
 
                     Array.from({ length: numberOfPages }).forEach((_, i) => {
                         const currentPage = i + 1
@@ -211,7 +208,7 @@ exports.createPages = ({ graphql, actions }) => {
                             context: {
                                 // Data passed to context is available
                                 // in page queries as GraphQL variables.
-                                slug: node.slug,
+                                slug: node.frontmatter.slug,
                                 limit: postsPerPage,
                                 skip: i * postsPerPage,
                                 numberOfPages: numberOfPages,

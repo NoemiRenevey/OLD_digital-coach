@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import { Layout, PostCard, Pagination } from '../components/common'
@@ -12,8 +12,8 @@ import { MetaData } from '../components/common/meta'
 *
 */
 const Author = ({ data, location, pageContext }) => {
-    const author = data.ghostAuthor
-    const posts = data.allGhostPost.edges
+    const author = data.allMarkdownRemark.edges[0].node.frontmatter
+    // const posts = data.allGhostPost.edges
     const twitterUrl = author.twitter ? `https://twitter.com/${author.twitter.replace(/^@/, ``)}` : null
     const facebookUrl = author.facebook ? `https://www.facebook.com/${author.facebook.replace(/^\//, ``)}` : null
 
@@ -40,12 +40,14 @@ const Author = ({ data, location, pageContext }) => {
                             {author.profile_image && <img src={author.profile_image} alt={author.name} />}
                         </div>
                     </header>
+                    {/*
                     <section className="post-feed">
                         {posts.map(({ node }) => (
                             // The tag below includes the markup for each post - components/common/PostCard.js
                             <PostCard key={node.id} post={node} />
                         ))}
                     </section>
+                    */}
                     <Pagination pageContext={pageContext} />
                 </div>
             </Layout>
@@ -53,43 +55,38 @@ const Author = ({ data, location, pageContext }) => {
     )
 }
 
-Author.propTypes = {
-    data: PropTypes.shape({
-        ghostAuthor: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            cover_image: PropTypes.string,
-            profile_image: PropTypes.string,
-            website: PropTypes.string,
-            bio: PropTypes.string,
-            location: PropTypes.string,
-            facebook: PropTypes.string,
-            twitter: PropTypes.string,
-        }),
-        allGhostPost: PropTypes.object.isRequired,
-    }).isRequired,
-    location: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-    }).isRequired,
-}
+// Author.propTypes = {
+//     data: PropTypes.shape({
+//         ghostAuthor: PropTypes.shape({
+//             name: PropTypes.string.isRequired,
+//             cover_image: PropTypes.string,
+//             profile_image: PropTypes.string,
+//             website: PropTypes.string,
+//             bio: PropTypes.string,
+//             location: PropTypes.string,
+//             facebook: PropTypes.string,
+//             twitter: PropTypes.string,
+//         }),
+//         allGhostPost: PropTypes.object.isRequired,
+//     }).isRequired,
+//     location: PropTypes.shape({
+//         pathname: PropTypes.string.isRequired,
+//     }).isRequired,
+// }
 
 export default Author
 
 export const pageQuery = graphql`
-    query GhostAuthorQuery($slug: String!, $limit: Int!, $skip: Int!) {
-        ghostAuthor(slug: { eq: $slug }) {
-            ...GhostAuthorFields
-        }
-        allGhostPost(
-            sort: { order: DESC, fields: [published_at] },
-            filter: {authors: {elemMatch: {slug: {eq: $slug}}}},
-            limit: $limit,
-            skip: $skip
-        ) {
-            edges {
-                node {
-                ...GhostPostFields
+query authorArticlesQuery($author: String) {
+    allMarkdownRemark(filter: {frontmatter: {author: {eq: $author}}, fileAbsolutePath: {regex: "\/articles/"}}) {
+        edges {
+            node {
+                frontmatter {
+                title
+                slug 
                 }
             }
         }
     }
+}
 `
