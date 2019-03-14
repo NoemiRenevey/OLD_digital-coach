@@ -13,8 +13,8 @@ module.exports = {
 
     postsPerPage: 12, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
-    siteTitleMeta: `Ghost Gatsby Starter`, // This allows an alternative site title for meta data for pages.
-    siteDescriptionMeta: `A starter template to build amazing static websites with Ghost and Gatbsy`, // This allows an alternative site description for meta data for pages.
+    siteTitleMeta: `Formation Digitale`, // This allows an alternative site title for meta data for pages.
+    siteDescriptionMeta: `Soyez autonome, pas besoin d'agence, suivez nos recettes digitales pas à pas.`, // This allows an alternative site description for meta data for pages.
 
     shareImage: `/images/Ghost-Docs.jpg`, // fallback image for meta data. Will be used, when no post/tag/author image specified. 1200x1200 is recommended
     shareImageWidth: 1000, // Change to the width of your default share image
