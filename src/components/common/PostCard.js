@@ -6,8 +6,8 @@ import { Link } from 'gatsby'
 
 const PostCard = ({ post }) => {
     const url = `/${post.frontmatter.slug}/`
-    const author = post.frontmatter.author.frontmatter.author_id ? post.frontmatter.author.frontmatter.author_id : "Lyketil" 
-    const authorSlug = post.frontmatter.author.frontmatter.slug
+    const author = post.frontmatter.author ? post.frontmatter.author.frontmatter.author_id : "Lyketil" 
+    const authorSlug = post.frontmatter.author ? post.frontmatter.author.frontmatter.slug : null
     // const readingTime = readingTimeHelper(post)
 
     return (

@@ -10,14 +10,19 @@ import { MetaData } from '../components/common/meta'
 *
 * Loads all posts for the requested author incl. pagination.
 *
+* Issue about filtering mapped fields in graphql 
+* @link https://github.com/gatsbyjs/gatsby/issues/4614
+*
 */
 const Author = ({ data, location, pageContext }) => {
-    const author = data.allMarkdownRemark.edges[0].node.frontmatter
-    // const posts = data.allGhostPost.edges
+    // console.log(data.singleAuthor)
+    const author = data.singleAuthor.edges["0"].node.frontmatter
     const twitterUrl = author.twitter ? `https://twitter.com/${author.twitter.replace(/^@/, ``)}` : null
     const facebookUrl = author.facebook ? `https://www.facebook.com/${author.facebook.replace(/^\//, ``)}` : null
-    console.log('Author', author)
-    const profileImage = author.avatar.childImageSharp.fixed.src
+    const profileImage = author.avatar !== null ? author.avatar.childImageSharp.fixed.src : 'https://via.placeholder.com/150'
+
+    console.log(data.posts)
+    const posts = data.posts.edges
 
     return (
         <Fragment>
@@ -42,14 +47,21 @@ const Author = ({ data, location, pageContext }) => {
                             {profileImage && <img src={profileImage} alt={author.author_id} />}
                         </div>
                     </header>
-                    {/*
                     <section className="post-feed">
-                        {posts.map(({ node }) => (
+                        {posts.map(({ node }) => {
                             // The tag below includes the markup for each post - components/common/PostCard.js
-                            <PostCard key={node.id} post={node} />
-                        ))}
+                            console.log("node.frontmatter.author", node.frontmatter.author.frontmatter.author_id)
+                            console.log("author.author_id", author.author_id)
+                            if (node.frontmatter.author) {
+                                if (node.frontmatter.author.frontmatter.author_id === author.author_id) {
+                                    return (
+                                        <PostCard key={node.id} post={node} />
+                                    )
+                                }
+                            }
+                            return null
+                        })}
                     </section>
-                    */}
                     <Pagination pageContext={pageContext} />
                 </div>
             </Layout>
@@ -79,8 +91,8 @@ const Author = ({ data, location, pageContext }) => {
 export default Author
 
 export const pageQuery = graphql`
-query authorArticlesQuery($author: String) {
-    allMarkdownRemark(filter: {frontmatter: {author: {eq: $author}}, fileAbsolutePath: {regex: "\/authors/"}}) {
+query authorArticlesQuery($slug: String!) {
+    singleAuthor: allMarkdownRemark(filter: {frontmatter: {slug: {eq: $slug}}, fileAbsolutePath: {regex: "\/authors/"}}) {
         edges {
             node {
                 frontmatter {
@@ -98,6 +110,30 @@ query authorArticlesQuery($author: String) {
                 }
                 html
             }
+        }
+    }
+    posts: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/articles/"}}) {
+        edges {
+          node {
+            frontmatter {
+                slug
+                date
+                title
+                desc
+                author {
+                    frontmatter {
+                        author_id
+                    }
+                }
+                featured_image {
+                    childImageSharp {
+                      fixed(width: 300) {
+                        src
+                      }
+                    }
+                }
+            }
+          }
         }
     }
 }
