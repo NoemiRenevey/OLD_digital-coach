@@ -69,6 +69,13 @@ export const pageQuery = graphql`
                             frontmatter {
                               author_id
                               slug
+                              avatar {
+                                childImageSharp {
+                                  fixed(width: 100) {
+                                    src
+                                  }
+                                }
+                              }
                             }
                         }
                         tags

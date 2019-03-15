@@ -76,6 +76,13 @@ query tagQuery($tag: String) {
                 frontmatter {
                     author_id
                     slug
+                    avatar {
+                        childImageSharp {
+                          fixed(width: 100) {
+                            src
+                          }
+                        }
+                    }
                 }
             }
             tags

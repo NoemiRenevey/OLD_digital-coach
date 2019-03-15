@@ -125,6 +125,13 @@ query authorArticlesQuery($slug: String!) {
                 author {
                     frontmatter {
                         author_id
+                        avatar {
+                            childImageSharp {
+                              fixed(width: 100) {
+                                src
+                              }
+                            }
+                        }
                     }
                 }
                 featured_image {

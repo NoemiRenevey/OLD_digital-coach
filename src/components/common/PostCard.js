@@ -7,9 +7,8 @@ const _ = require(`lodash`)
 
 const PostCard = ({ post }) => {
     const url = `/${post.frontmatter.slug}/`
-    const author = post.frontmatter.author ? post.frontmatter.author.frontmatter.author_id : "Lyketil" 
+    const author = post.frontmatter.author ? post.frontmatter.author.frontmatter.author_id : `Lyketil` 
     const authorSlug = post.frontmatter.author ? post.frontmatter.author.frontmatter.slug : null
-    // const readingTime = readingTimeHelper(post)
 
     return (
         <Link to={url} className="post-card">
@@ -32,12 +31,14 @@ const PostCard = ({ post }) => {
             </header>
             <section className="post-card-excerpt">{post.frontmatter.desc}</section>
             <footer className="post-card-footer">
+                {author && 
                 <div className="post-card-footer-left">
                     <div className="post-card-avatar">
-                        <img className="author-profile-image" src="https://via.placeholder.com/300" alt=""/>
+                        <img className="author-profile-image" src={post.frontmatter.author.frontmatter.avatar.childImageSharp.fixed.src} alt={author} />
                     </div>
-                    {author && <span><Link to={`/author/${authorSlug}`}>{author}</Link></span>}
+                    <span><Link to={`/author/${authorSlug}`}>{author}</Link></span>
                 </div>
+                }
                 <div className="post-card-footer-right">
                     <div>{post.timeToRead} min</div>
                 </div>
