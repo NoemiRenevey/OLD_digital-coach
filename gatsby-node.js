@@ -12,20 +12,22 @@ exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions
 
     /**
-    * Posts
+    * Articles
     */
     const createPosts = new Promise((resolve, reject) => {
         const postTemplate = path.resolve(`./src/templates/post.js`)
         const indexTemplate = path.resolve(`./src/templates/index.js`)
+        const tagTemplate = path.resolve(`./src/templates/tag.js`)
         resolve(
             graphql(`
               query allArticles {
-                allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/article/"}}) {
+                allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/articles/"}}) {
                   edges {
                     node {
                       frontmatter {
                         title
                         slug
+                        tags
                       }
                     }
                   }
@@ -54,6 +56,29 @@ exports.createPages = ({ graphql, actions }) => {
                             // Data passed to context is available
                             // in page queries as GraphQL variables.
                             slug: node.frontmatter.slug,
+                        },
+                    })
+                })
+
+                // create tags pages
+                let tags = []
+
+                _.each(items, (edge) => {
+                    if (_.get(edge, "node.frontmatter.tags")) {
+                        tags = tags.concat(edge.node.frontmatter.tags)
+                    }
+                })
+
+                // Eliminate duplicate tags
+                tags = _.uniq(tags)
+
+                // Make tag pages
+                tags.forEach((tag) => {
+                    createPage({
+                        path: `/tags/${_.kebabCase(tag)}/`,
+                        component: tagTemplate,
+                        context: {
+                            tag,
                         },
                     })
                 })

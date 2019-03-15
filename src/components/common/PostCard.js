@@ -1,6 +1,7 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+const _ = require(`lodash`)
 // import { Tags } from '@tryghost/helpers-gatsby'
 // import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
@@ -16,8 +17,16 @@ const PostCard = ({ post }) => {
                 {post.frontmatter.featured_image &&
                     <div className="post-card-image" style={{
                         backgroundImage: `url(${post.frontmatter.featured_image.childImageSharp.fixed.src})` ,
-                    }}></div>}
-                <div className="post-card-tags">Tag 1, Tag 2</div>
+                    }}></div>
+                }
+                {post.frontmatter.tags &&
+                    <div className="post-card-tags">
+                        {post.frontmatter.tags.map((tag, i) => [
+                            i > 0 && `, `,
+                            <Link to={`/tags/${_.kebabCase(tag)}/`} key={i}>{tag}</Link>
+                        ])}
+                    </div>
+                }
                 <span>1. Webmarketing</span>
                 <h2 className="post-card-title">{post.frontmatter.title}</h2>
             </header>

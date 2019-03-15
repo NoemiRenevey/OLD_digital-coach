@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Fragment } from 'react'
+// import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import { Layout, PostCard, Pagination } from '../components/common'
@@ -12,11 +12,11 @@ import { MetaData } from '../components/common/meta'
 *
 */
 const Tag = ({ data, location, pageContext }) => {
-    const tag = data.ghostTag
-    const posts = data.allGhostPost.edges
+    const tag = pageContext.tag
+    const posts = data.allMarkdownRemark.edges
 
     return (
-        <>
+        <Fragment>
             <MetaData
                 data={data}
                 location={location}
@@ -25,8 +25,7 @@ const Tag = ({ data, location, pageContext }) => {
             <Layout>
                 <div className="container">
                     <header className="tag-header">
-                        <h1>{tag.name}</h1>
-                        {tag.description ? <p>{tag.description}</p> : null }
+                        <h1>{tag}</h1>
                     </header>
                     <section className="post-feed">
                         {posts.map(({ node }) => (
@@ -37,41 +36,52 @@ const Tag = ({ data, location, pageContext }) => {
                     <Pagination pageContext={pageContext} />
                 </div>
             </Layout>
-        </>
+        </Fragment>
     )
 }
 
-Tag.propTypes = {
-    data: PropTypes.shape({
-        ghostTag: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string,
-        }),
-        allGhostPost: PropTypes.object.isRequired,
-    }).isRequired,
-    location: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-    }).isRequired,
-}
+// Tag.propTypes = {
+//     data: PropTypes.shape({
+//         ghostTag: PropTypes.shape({
+//             name: PropTypes.string.isRequired,
+//             description: PropTypes.string,
+//         }),
+//         allGhostPost: PropTypes.object.isRequired,
+//     }).isRequired,
+//     location: PropTypes.shape({
+//         pathname: PropTypes.string.isRequired,
+//     }).isRequired,
+// }
 
 export default Tag
 
 export const pageQuery = graphql`
-    query GhostTagQuery($slug: String!, $limit: Int!, $skip: Int!) {
-        ghostTag(slug: { eq: $slug }) {
-            ...GhostTagFields
-        }
-        allGhostPost(
-            sort: { order: DESC, fields: [published_at] },
-            filter: {tags: {elemMatch: {slug: {eq: $slug}}}},
-            limit: $limit,
-            skip: $skip
-        ) {
-            edges {
-                node {
-                ...GhostPostFields
+query tagQuery($tag: String) {
+    allMarkdownRemark(filter: {frontmatter: {tags: {in: [$tag]}}}) {
+      edges {
+        node {
+          frontmatter {
+            slug
+            date
+            title
+            desc
+            featured_image {
+                childImageSharp {
+                    fixed(width: 300) {
+                    src
+                    }
                 }
             }
+            author {
+                frontmatter {
+                    author_id
+                    slug
+                }
+            }
+            tags
+          }
         }
+      }
     }
+  }
 `
