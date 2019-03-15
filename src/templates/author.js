@@ -95,6 +95,7 @@ query authorArticlesQuery($slug: String!) {
     singleAuthor: allMarkdownRemark(filter: {frontmatter: {slug: {eq: $slug}}, fileAbsolutePath: {regex: "\/authors/"}}) {
         edges {
             node {
+                id
                 frontmatter {
                     author_id
                     slug
@@ -115,6 +116,7 @@ query authorArticlesQuery($slug: String!) {
     posts: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/articles/"}}) {
         edges {
           node {
+            id
             frontmatter {
                 slug
                 date
