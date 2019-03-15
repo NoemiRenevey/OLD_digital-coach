@@ -76,7 +76,16 @@ module.exports = {
                 name: `authors`,
             },
         },
-        `gatsby-transformer-remark`,
+        // Transform markdown to HTML
+        // add reading time https://www.gatsbyjs.org/packages/gatsby-remark-reading-time/
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [
+                    `gatsby-remark-reading-time`,
+                ],
+            },
+        },
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
         {

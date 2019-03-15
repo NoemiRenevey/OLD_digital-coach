@@ -136,6 +136,7 @@ query authorArticlesQuery($slug: String!) {
                 }
                 tags
             }
+            timeToRead
           }
         }
     }

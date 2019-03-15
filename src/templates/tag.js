@@ -80,6 +80,7 @@ query tagQuery($tag: String) {
             }
             tags
           }
+          timeToRead
         }
       }
     }

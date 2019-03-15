@@ -39,7 +39,7 @@ const PostCard = ({ post }) => {
                     {author && <span><Link to={`/author/${authorSlug}`}>{author}</Link></span>}
                 </div>
                 <div className="post-card-footer-right">
-                    <div>2min</div>
+                    <div>{post.timeToRead} min</div>
                 </div>
             </footer>
         </Link>
