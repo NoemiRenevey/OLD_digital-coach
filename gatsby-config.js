@@ -88,6 +88,12 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
+                path: `./src/articles/objectives/`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
                 path: `./src/digital_tools/`,
             },
         },
@@ -233,5 +239,6 @@ module.exports = {
         'MarkdownRemark.frontmatter.author': `MarkdownRemark.frontmatter.author_id`,
         'MarkdownRemark.frontmatter.category': `CategoriesYaml`,
         'MarkdownRemark.frontmatter.tools': `ToolsYaml`,
+        'MarkdownRemark.frontmatter.objectives': `ObjectivesYaml`,
     },
 }
