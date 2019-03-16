@@ -8,6 +8,7 @@ const _ = require(`lodash`)
 const PostCard = ({ post }) => {
     const url = `/${post.frontmatter.slug}/`
     const tools = post.frontmatter.tools
+    const objectives = post.frontmatter.objectives
     // const author = post.frontmatter.author ? post.frontmatter.author.frontmatter.author_id : `Lyketil` 
     // const authorSlug = post.frontmatter.author ? post.frontmatter.author.frontmatter.slug : null
 
@@ -19,11 +20,11 @@ const PostCard = ({ post }) => {
                         backgroundImage: `url(${post.frontmatter.featured_image.childImageSharp.fixed.src})` ,
                     }}></div>
                 }
-                {post.frontmatter.tags &&
+                {objectives &&
                     <div className="post-card-tags">
-                        {post.frontmatter.tags.map((tag, i) => [
+                        {objectives.map((obj, i) => [
                             i > 0 && `, `,
-                            <Link to={`/tags/${_.kebabCase(tag)}/`} key={i}>{tag}</Link>
+                            <Link to={`/tags/${_.kebabCase(obj.id)}/`} key={i}>{obj.name}</Link>
                         ])}
                     </div>
                 }

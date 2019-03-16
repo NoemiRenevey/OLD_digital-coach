@@ -97,6 +97,10 @@ export const pageQuery = graphql`
                                 }
                             }
                         }
+                        objectives {
+                            id
+                            name
+                        }
                     }
                     timeToRead
                 }
