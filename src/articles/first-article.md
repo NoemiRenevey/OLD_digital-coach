@@ -6,7 +6,7 @@ desc: "Just a small description for the faint-hearted"
 featured_image: "./img/sony-alpha-7.jpeg"
 author: Lyketil
 tags: ["Test", "Facebook", "Avancé"]
-category: "1. Webmarketing"
+category: "webmarketing"
 tools: ["Facebook Ads", "Mailchimp"]
 ---
 
