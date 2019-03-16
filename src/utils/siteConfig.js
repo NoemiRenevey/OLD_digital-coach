@@ -6,15 +6,17 @@ module.exports = {
     instagramUrl: ``,
 
     navigation: [
-        { label: `Help`, url: `/help` },
-        { label: `About`, url: `/about` },
-        { label: `Digital Lab`, url: `https://lyketil.com` },
+        { label: `1 - Webmarketing`, url: `/webmarketing-strategie-digitale` },
+        { label: `2 - Contenu`, url: `/creation-de-contenu` },
+        { label: `3 - Site Internet`, url: `/optimisation-de-site-web` },
+        { label: `4 - Digitalisation d'Entreprise`, url: `/digitalisation-entreprise` },
+        { label: `Non, Je veux être accompagné`, url: `https://lyketil.com` },
     ],
 
     postsPerPage: 12, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
     siteTitleMeta: `Formation Digitale`, // This allows an alternative site title for meta data for pages.
-    siteDescriptionMeta: `Soyez autonome, pas besoin d'agence, suivez nos recettes digitales pas à pas.`, // This allows an alternative site description for meta data for pages.
+    siteDescriptionMeta: `Soyez autonome dans votre digitalisation, pas besoin d'agence digitale, suivez nos recettes digitales et obtenez des résultats.`, // This allows an alternative site description for meta data for pages.
 
     shareImage: `/images/Ghost-Docs.jpg`, // fallback image for meta data. Will be used, when no post/tag/author image specified. 1200x1200 is recommended
     shareImageWidth: 1000, // Change to the width of your default share image
