@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import { graphql } from 'gatsby'
 
 import { Layout, PostCard, Pagination } from '../components/common'
-import { MetaData } from '../components/common/meta'
+// import { MetaData } from '../components/common/meta'
 
 /**
 * Main index page (home page)
@@ -19,7 +19,7 @@ const Index = ({ data, location, pageContext }) => {
 
     return (
         <Fragment>
-            <MetaData location={location} />
+            {/*<MetaData location={location} />*/}
             <Layout isHome={true}>
                 <div className="container">
                     <section className="post-feed">
@@ -79,6 +79,13 @@ export const pageQuery = graphql`
                             }
                         }
                         tags
+                        category {
+                            id
+                            slug
+                            short_title
+                            title
+                            intro
+                        }
                     }
                     timeToRead
                 }

@@ -142,6 +142,13 @@ query authorArticlesQuery($slug: String!) {
                     }
                 }
                 tags
+                category {
+                    id
+                    slug
+                    short_title
+                    title
+                    intro
+                }
             }
             timeToRead
           }

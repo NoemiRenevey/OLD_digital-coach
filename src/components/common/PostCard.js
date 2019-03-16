@@ -26,7 +26,8 @@ const PostCard = ({ post }) => {
                         ])}
                     </div>
                 }
-                <span>1. Webmarketing</span>
+                {console.log(post.frontmatter.category.short_title)}
+                <span><Link to={`/${post.frontmatter.category.slug}`}>{post.frontmatter.category.short_title}</Link></span>
                 <h2 className="post-card-title">{post.frontmatter.title}</h2>
             </header>
             <section className="post-card-excerpt">{post.frontmatter.desc}</section>

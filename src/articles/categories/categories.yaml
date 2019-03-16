@@ -1,12 +1,15 @@
 - id: webmarketing
   slug: webmarketing-strategie-digitale
+  short_title: 1 - Webmarketing
   title: Gérez votre stratégie webmarketing
   intro: Stratégie Webmarketing
 - id: contenu
   slug: creation-de-contenu
+  short_title: 2 - Contenu
   title: Créer du Contenu
   intro: Page sur la Création de Contenu 
 - id: website
   slug: optimisation-de-site-web
+  short_title: 3 - Site Web
   title: Créer ou améliorer son site web
   intro: Optimisation web 
