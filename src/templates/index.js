@@ -86,6 +86,17 @@ export const pageQuery = graphql`
                             title
                             intro
                         }
+                        complexity
+                        tools {
+                            name
+                            logo {
+                                childImageSharp {
+                                    fixed {
+                                        src
+                                    }
+                                }
+                            }
+                        }
                     }
                     timeToRead
                 }

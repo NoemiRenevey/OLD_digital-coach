@@ -76,13 +76,19 @@ module.exports = {
                 name: `authors`,
             },
         },
-        // Setup for YAML categories
+        // Setup for YAML categories and tools
         // See https://www.gatsbyjs.org/packages/gatsby-transformer-yaml/
         `gatsby-transformer-yaml`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
                 path: `./src/articles/categories/`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `./src/digital_tools/`,
             },
         },
         // Transform markdown to HTML
@@ -226,5 +232,6 @@ module.exports = {
     mapping: {
         'MarkdownRemark.frontmatter.author': `MarkdownRemark.frontmatter.author_id`,
         'MarkdownRemark.frontmatter.category': `CategoriesYaml`,
+        'MarkdownRemark.frontmatter.tools': `ToolsYaml`,
     },
 }

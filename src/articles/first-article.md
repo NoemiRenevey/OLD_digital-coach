@@ -5,9 +5,10 @@ title: "My first blog post"
 desc: "Just a small description for the faint-hearted"
 featured_image: "./img/sony-alpha-7.jpeg"
 author: Lyketil
-tags: ["Test", "Facebook", "Avancé"]
+complexity: 1
+tags: ["Créer du Trafic", "Se faire connaître"]
 category: "webmarketing"
-tools: ["Facebook Ads", "Mailchimp"]
+tools: ["facebook-ads", "mailchimp"]
 ---
 
 # Blablabla

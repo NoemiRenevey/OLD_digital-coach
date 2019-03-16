@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 // import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 const _ = require(`lodash`)
@@ -7,8 +7,9 @@ const _ = require(`lodash`)
 
 const PostCard = ({ post }) => {
     const url = `/${post.frontmatter.slug}/`
-    const author = post.frontmatter.author ? post.frontmatter.author.frontmatter.author_id : `Lyketil` 
-    const authorSlug = post.frontmatter.author ? post.frontmatter.author.frontmatter.slug : null
+    const tools = post.frontmatter.tools
+    // const author = post.frontmatter.author ? post.frontmatter.author.frontmatter.author_id : `Lyketil` 
+    // const authorSlug = post.frontmatter.author ? post.frontmatter.author.frontmatter.slug : null
 
     return (
         <Link to={url} className="post-card">
@@ -26,18 +27,23 @@ const PostCard = ({ post }) => {
                         ])}
                     </div>
                 }
-                {console.log(post.frontmatter.category.short_title)}
                 <span><Link to={`/${post.frontmatter.category.slug}`}>{post.frontmatter.category.short_title}</Link></span>
                 <h2 className="post-card-title">{post.frontmatter.title}</h2>
             </header>
             <section className="post-card-excerpt">{post.frontmatter.desc}</section>
             <footer className="post-card-footer">
-                {author && 
+                {tools && 
                 <div className="post-card-footer-left">
-                    <div className="post-card-avatar">
-                        <img className="author-profile-image" src={post.frontmatter.author.frontmatter.avatar.childImageSharp.fixed.src} alt={author} />
-                    </div>
-                    <span><Link to={`/author/${authorSlug}`}>{author}</Link></span>
+                    {tools.map((tool, i) => {
+                        return (
+                            <Fragment key={i}>
+                                <div className="post-card-avatar">
+                                    <img className="author-profile-image" src={tool.logo.childImageSharp.fixed.src} alt={tool.name} />
+                                </div>
+                                <span><Link to={`/outils/${tool.id}`}>{tool.name}</Link></span>
+                            </Fragment>
+                        )
+                    })}
                 </div>
                 }
                 <div className="post-card-footer-right">
