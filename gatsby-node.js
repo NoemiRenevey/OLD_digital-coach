@@ -22,7 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
         resolve(
             graphql(`
               query allArticles {
-                allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/articles/"}}) {
+                articles: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/articles/"}}) {
                   edges {
                     node {
                       frontmatter {
@@ -31,25 +31,29 @@ exports.createPages = ({ graphql, actions }) => {
                         goals {
                             id
                         }
-                        category {
-                            id
-                            slug
-                        }
                       }
                     }
                   }
                 }
+                categories: allCategoriesYaml {
+                    edges {
+                      node {
+                        id
+                        slug
+                      }
+                    }
+                  }
               }`
             ).then((result) => {
                 if (result.errors) {
                     return reject(result.errors)
                 }
 
-                if (!result.data.allMarkdownRemark) {
+                if (!result.data.articles) {
                     return resolve()
                 }
 
-                const items = result.data.allMarkdownRemark.edges
+                const items = result.data.articles.edges
 
                 _.forEach(items, ({ node }) => {
                     // This part here defines, that our posts will use
@@ -91,11 +95,12 @@ exports.createPages = ({ graphql, actions }) => {
                 })
 
                 // 2. Create category pages
+                const categs = result.data.categories.edges
                 let categories = []
 
-                _.each(items, (edge) => {
-                    if (_.get(edge, `node.frontmatter.category`)) {
-                        categories = categories.concat(edge.node.frontmatter.category.slug)
+                _.each(categs, (edge) => {
+                    if (_.get(edge, `node.slug`)) {
+                        categories = categories.concat(edge.node.slug)
                     }
                 })
 
