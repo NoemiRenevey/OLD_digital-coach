@@ -26,49 +26,53 @@ const PostCard = ({ post }) => {
                         backgroundImage: `url(${featuredImg.childImageSharp.fixed.src})` ,
                     }}></div>
                 }
+                <div css={cardWrapper}>
+                    {category &&
+                        <span css={cardCategory}><Link to={`/${category.slug}`}>{category.short_title}</Link></span>
+                    }
+                    <h2 css={cardTitle}>{title}</h2>
+                </div>
+            </header>
+
+            <div css={cardWrapper}>
+                <section css={cardExcerpt}>{excerpt}</section>
+
                 {goals &&
-                    <div css={cardTags}>
+                    <div css={cardGoals}>
                         {goals.map((goal, i) => [
                             i > 0 && `, `,
                             <Link to={`/objectif/${_.kebabCase(goal.id)}/`} key={i}>{goal.name}</Link>
                         ])}
                     </div>
                 }
-                {category &&
-                    <span css={cardCategory}><Link to={`/${category.slug}`}>{category.short_title}</Link></span>
-                }
-                <h2 css={cardTitle}>{title}</h2>
-            </header>
+                <footer css={cardFooter}>
+                    {tools && 
+                    <div css={cardFooterLeft}>
+                        {tools.map((tool, i) => {
+                            return (
+                                <div css={toolList} key={i}>
+                                    <div css={itemTooltip} className="name-tooltip">
+                                        {tool.name}
+                                    </div>
 
-            <section css={cardExcerpt}>{excerpt}</section>
-
-            <footer css={cardFooter}>
-                {tools && 
-                <div css={cardFooterLeft}>
-                    {tools.map((tool, i) => {
-                        return (
-                            <div css={toolList} key={i}>
-                                <div css={itemTooltip} className="name-tooltip">
-                                    {tool.name}
+                                    {tool.logo && 
+                                        <Link to={`/outils-digitaux/${tool.id}`}>                                               
+                                            <Img 
+                                                alt={tool.name}
+                                                fixed={tool.logo.childImageSharp.fixed}
+                                            />
+                                        </Link>
+                                    }
                                 </div>
-
-                                {tool.logo && 
-                                    <Link to={`/outils-digitaux/${tool.id}`}>                                               
-                                        <Img 
-                                            alt={tool.name}
-                                            fixed={tool.logo.childImageSharp.fixed}
-                                        />
-                                    </Link>
-                                }
-                            </div>
-                        )
-                    })}
-                </div>
-                }
-                <div css={cardFooterRight}>
-                    <div>{post.timeToRead} min</div>
-                </div>
-            </footer>
+                            )
+                        })}
+                    </div>
+                    }
+                    <div css={cardFooterRight}>
+                        <div>{post.timeToRead} min</div>
+                    </div>
+                </footer>
+            </div>
         </Link>
     )
 }
@@ -100,46 +104,39 @@ export default PostCard
  */
 
 const postCard = css`
+    border: 1px solid ${colors.whitegrey};
+    border-radius: 5px;
     color: inherit;
     text-decoration: none;
+    box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
+    transition: all 0.5s ease;
 
     :hover {
         text-decoration: none;
+        box-shadow: rgba(39, 44, 49, 0.2) 1px 6px 12px;
+        transition: all 0.4s ease;
     }
+`
+
+const cardWrapper = css`
+    padding: 0 10px; 
 `
 
 const cardHeader = css`
 `
 
 const cardImage = css`
-    margin: 0 0 10px 0;
+    margin: 0;
     width: auto;
     height: 200px;
+    border-radius: 5px 5px 0 0;
     background: ${colors.lightgrey} no-repeat center center;
     background-size: cover;
 `
 
-const cardTags = css`
-    margin: 0 0 5px 0;
-    font-size: 1.4rem;
-    line-height: 1.15em;
-    color: white;
-
-    a {
-        background-color: ${colors.whitegrey}; 
-        color: ${colors.midgrey};
-        padding: 4px 8px;
-        border-radius: 5px;
-
-        :hover {
-            text-decoration: none;
-        }
-    }
-`
-
 const cardCategory = css`
     display: block;    
-    margin: 10px 0 5px;
+    margin: 5px 0 2px;
 
     a {
         color: ${colors.midgrey};
@@ -158,6 +155,24 @@ const cardTitle = css`
 const cardExcerpt = css`
     font-size: 1.6rem;
     line-height: 1.55em;
+`
+
+const cardGoals = css`
+    margin: 20px 0 20px;
+    font-size: 1.4rem;
+    line-height: 1.15em;
+    color: white;
+
+    a {
+        background-color: ${colors.whitegrey}; 
+        color: ${colors.midgrey};
+        padding: 4px 8px;
+        border-radius: 5px;
+
+        :hover {
+            text-decoration: none;
+        }
+    }
 `
 
 const cardFooter = css`
