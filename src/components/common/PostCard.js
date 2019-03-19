@@ -1,8 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 // import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 const _ = require(`lodash`)
+import { MdTimelapse } from "react-icons/md"
+import { FaCheck } from "react-icons/fa"
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { colors } from '../../styles/constants'
@@ -41,7 +43,7 @@ const PostCard = ({ post }) => {
                     <div css={cardGoals}>
                         {goals.map((goal, i) => [
                             i > 0 && `, `,
-                            <Link to={`/objectif/${_.kebabCase(goal.id)}/`} key={i}>{goal.name}</Link>
+                            <Link to={`/objectif/${_.kebabCase(goal.id)}/`} key={i}><FaCheck /> {goal.name}</Link>
                         ])}
                     </div>
                 }
@@ -69,7 +71,7 @@ const PostCard = ({ post }) => {
                     </div>
                     }
                     <div css={cardFooterRight}>
-                        <div>{post.timeToRead} min</div>
+                        <div><MdTimelapse /> {post.timeToRead} min</div>
                     </div>
                 </footer>
             </div>
@@ -143,6 +145,8 @@ const cardCategory = css`
 
         :hover {
             text-decoration: none;
+            color: ${colors.accent};
+            transition: color .2s linear;
         }
     }
 `
@@ -169,8 +173,14 @@ const cardGoals = css`
         padding: 4px 8px;
         border-radius: 5px;
 
+        svg {
+            margin-bottom: 2px;
+        }
+
         :hover {
             text-decoration: none;
+            color: ${colors.accent};
+            transition: color .2s linear;
         }
     }
 `
@@ -179,7 +189,7 @@ const cardFooter = css`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 0 0 0;
+    margin: 10px 0 6px 0;
     color: ${colors.accent};
 `
 
