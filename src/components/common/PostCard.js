@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 const _ = require(`lodash`)
 
 import { MdTimelapse } from "react-icons/md"
-import { FaCheck } from "react-icons/fa"
+import { FaCheck, FaFlask } from "react-icons/fa"
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -32,7 +32,7 @@ const PostCard = ({ post }) => {
                 }
                 <div css={cardWrapper}>
                     {category &&
-                        <span css={cardCategory}><Link to={`/${category.slug}`}>{category.short_title}</Link></span>
+                        <span css={cardCategory}><Link to={`/${category.slug}`}><FaFlask />  {category.short_title}</Link></span>
                     }
                     <h2 css={cardTitle}>{title}</h2>
                 </div>
