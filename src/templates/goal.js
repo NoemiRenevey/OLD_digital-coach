@@ -110,6 +110,17 @@ query goalQuery($goal: String) {
                 id
                 name
             }
+            tools {
+                id
+                name
+                logo {
+                    childImageSharp {
+                        fixed(width: 50, height: 50) {
+                            ...GatsbyImageSharpFixed_withWebp
+                        }
+                    }
+                }
+            }
           }
           timeToRead
         }
