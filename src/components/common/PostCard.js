@@ -8,7 +8,7 @@ const _ = require(`lodash`)
 const PostCard = ({ post }) => {
     const url = `/${post.frontmatter.slug}/`
     const tools = post.frontmatter.tools
-    const objectives = post.frontmatter.objectives
+    const goals = post.frontmatter.goals
     // const author = post.frontmatter.author ? post.frontmatter.author.frontmatter.author_id : `Lyketil` 
     // const authorSlug = post.frontmatter.author ? post.frontmatter.author.frontmatter.slug : null
 
@@ -20,15 +20,17 @@ const PostCard = ({ post }) => {
                         backgroundImage: `url(${post.frontmatter.featured_image.childImageSharp.fixed.src})` ,
                     }}></div>
                 }
-                {objectives &&
+                {goals &&
                     <div className="post-card-tags">
-                        {objectives.map((obj, i) => [
+                        {goals.map((goal, i) => [
                             i > 0 && `, `,
-                            <Link to={`/tags/${_.kebabCase(obj.id)}/`} key={i}>{obj.name}</Link>
+                            <Link to={`/objectif/${_.kebabCase(goal.id)}/`} key={i}>{goal.name}</Link>
                         ])}
                     </div>
                 }
-                <span><Link to={`/${post.frontmatter.category.slug}`}>{post.frontmatter.category.short_title}</Link></span>
+                {post.frontmatter.category &&
+                    <span><Link to={`/${post.frontmatter.category.slug}`}>{post.frontmatter.category.short_title}</Link></span>
+                }
                 <h2 className="post-card-title">{post.frontmatter.title}</h2>
             </header>
             <section className="post-card-excerpt">{post.frontmatter.desc}</section>

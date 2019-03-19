@@ -17,7 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
     const createPosts = new Promise((resolve, reject) => {
         const postTemplate = path.resolve(`./src/templates/post.js`)
         const indexTemplate = path.resolve(`./src/templates/index.js`)
-        const tagTemplate = path.resolve(`./src/templates/tag.js`)
+        const goalTemplate = path.resolve(`./src/templates/goal.js`)
         resolve(
             graphql(`
               query allArticles {
@@ -27,7 +27,9 @@ exports.createPages = ({ graphql, actions }) => {
                       frontmatter {
                         title
                         slug
-                        tags
+                        goals {
+                            id
+                        }
                       }
                     }
                   }
@@ -61,24 +63,24 @@ exports.createPages = ({ graphql, actions }) => {
                 })
 
                 // create tags pages
-                let tags = []
+                let goals = []
 
                 _.each(items, (edge) => {
-                    if (_.get(edge, "node.frontmatter.tags")) {
-                        tags = tags.concat(edge.node.frontmatter.tags)
+                    if (_.get(edge, `node.frontmatter.goals`)) {
+                        goals = goals.concat(edge.node.frontmatter.goals.map(goal => goal.id))
                     }
                 })
 
                 // Eliminate duplicate tags
-                tags = _.uniq(tags)
+                goals = _.uniq(goals)
 
                 // Make tag pages
-                tags.forEach((tag) => {
+                goals.forEach((goal) => {
                     createPage({
-                        path: `/tags/${_.kebabCase(tag)}/`,
-                        component: tagTemplate,
+                        path: `/objectif/${_.kebabCase(goal)}/`,
+                        component: goalTemplate,
                         context: {
-                            tag,
+                            goal,
                         },
                     })
                 })
@@ -96,81 +98,6 @@ exports.createPages = ({ graphql, actions }) => {
                             return `/page`
                         }
                     },
-                })
-
-                return resolve()
-            })
-        )
-    })
-
-    /**
-    * Tags
-    */
-    const createTags = new Promise((resolve, reject) => {
-        const tagsTemplate = path.resolve(`./src/templates/tag.js`)
-        resolve(
-            graphql(`
-                {
-                    allGhostTag(
-                        sort: {order: ASC, fields: name},
-                        filter: {
-                            slug: {ne: "data-schema"}
-                        }
-                    ) {
-                        edges {
-                            node {
-                                slug
-                                url
-                                postCount
-                            }
-                        }
-                    }
-                }`
-            ).then((result) => {
-                if (result.errors) {
-                    return reject(result.errors)
-                }
-
-                if (!result.data.allGhostTag) {
-                    return resolve()
-                }
-
-                const items = result.data.allGhostTag.edges
-                const postsPerPage = config.postsPerPage
-
-                _.forEach(items, ({ node }) => {
-                    const totalPosts = node.postCount !== null ? node.postCount : 0
-                    const numberOfPages = Math.ceil(totalPosts / postsPerPage)
-
-                    // This part here defines, that our tag pages will use
-                    // a `/tag/:slug/` permalink.
-                    node.url = `/tag/${node.slug}/`
-
-                    Array.from({ length: numberOfPages }).forEach((_, i) => {
-                        const currentPage = i + 1
-                        const prevPageNumber = currentPage <= 1 ? null : currentPage - 1
-                        const nextPageNumber = currentPage + 1 > numberOfPages ? null : currentPage + 1
-                        const previousPagePath = prevPageNumber ? prevPageNumber === 1 ? node.url : `${node.url}page/${prevPageNumber}/` : null
-                        const nextPagePath = nextPageNumber ? `${node.url}page/${nextPageNumber}/` : null
-
-                        createPage({
-                            path: i === 0 ? node.url : `${node.url}page/${i + 1}/`,
-                            component: path.resolve(tagsTemplate),
-                            context: {
-                                // Data passed to context is available
-                                // in page queries as GraphQL variables.
-                                slug: node.slug,
-                                limit: postsPerPage,
-                                skip: i * postsPerPage,
-                                numberOfPages: numberOfPages,
-                                humanPageNumber: currentPage,
-                                prevPageNumber: prevPageNumber,
-                                nextPageNumber: nextPageNumber,
-                                previousPagePath: previousPagePath,
-                                nextPagePath: nextPagePath,
-                            },
-                        })
-                    })
                 })
 
                 return resolve()
@@ -253,5 +180,5 @@ exports.createPages = ({ graphql, actions }) => {
         )
     })
 
-    return Promise.all([createPosts, createTags, createAuthors])
+    return Promise.all([createPosts, createAuthors])
 }

@@ -6,14 +6,11 @@ import { Layout, PostCard, Pagination } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
-* Tag page (/tag/:slug)
-*
-* Loads all posts for the requested tag incl. pagination.
-*
+* Goal page (/objective/:slug)
 */
-const Tag = ({ data, location, pageContext }) => {
-    const tag = pageContext.tag
-    const posts = data.allMarkdownRemark.edges
+const Goal = ({ data, location, pageContext }) => {
+    const goal = data.singleGoal.edges["0"].node
+    const posts = data.posts.edges
 
     return (
         <Fragment>
@@ -25,13 +22,23 @@ const Tag = ({ data, location, pageContext }) => {
             <Layout>
                 <div className="container">
                     <header className="tag-header">
-                        <h1>{tag}</h1>
+                        <h1>{goal.name}</h1>
                     </header>
                     <section className="post-feed">
-                        {posts.map(({ node }) => (
+                        {posts.map(({ node }) => {
                             // The tag below includes the markup for each post - components/common/PostCard.js
-                            <PostCard key={node.id} post={node} />
-                        ))}
+                            if (node.frontmatter.goals) {
+                                if (node.frontmatter.goals.map(goal => goal.id).includes(pageContext.goal)) {
+                                    return (
+                                        <PostCard key={node.id} post={node} />
+                                    )
+                                } else {
+                                    return null
+                                }
+                            } else {
+                                return null
+                            }
+                        })}
                     </section>
                     <Pagination pageContext={pageContext} />
                 </div>
@@ -53,13 +60,22 @@ const Tag = ({ data, location, pageContext }) => {
 //     }).isRequired,
 // }
 
-export default Tag
+export default Goal
 
 export const pageQuery = graphql`
-query tagQuery($tag: String) {
-    allMarkdownRemark(filter: {frontmatter: {tags: {in: [$tag]}}}) {
+query goalQuery($goal: String) {
+    singleGoal: allGoalsYaml(filter: {id: {eq: $goal}}) {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+    }
+    posts: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/articles/"}}) {
       edges {
         node {
+          id
           frontmatter {
             slug
             date
@@ -85,13 +101,14 @@ query tagQuery($tag: String) {
                     }
                 }
             }
-            tags
             category {
                 id
                 slug
                 short_title
-                title
-                intro
+            }
+            goals {
+                id
+                name
             }
           }
           timeToRead

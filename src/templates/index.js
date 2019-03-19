@@ -65,6 +65,10 @@ export const pageQuery = graphql`
                               }
                             }
                         }
+                        goals {
+                            id
+                            name
+                        }
                         author {
                             frontmatter {
                               author_id
@@ -78,7 +82,6 @@ export const pageQuery = graphql`
                               }
                             }
                         }
-                        tags
                         category {
                             id
                             slug
@@ -96,10 +99,6 @@ export const pageQuery = graphql`
                                     }
                                 }
                             }
-                        }
-                        objectives {
-                            id
-                            name
                         }
                     }
                     timeToRead

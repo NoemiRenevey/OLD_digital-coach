@@ -19,9 +19,8 @@ const Author = ({ data, location, pageContext }) => {
     const author = data.singleAuthor.edges["0"].node.frontmatter
     const twitterUrl = author.twitter ? `https://twitter.com/${author.twitter.replace(/^@/, ``)}` : null
     const facebookUrl = author.facebook ? `https://www.facebook.com/${author.facebook.replace(/^\//, ``)}` : null
-    const profileImage = author.avatar !== null ? author.avatar.childImageSharp.fixed.src : 'https://via.placeholder.com/150'
+    const profileImage = author.avatar !== null ? author.avatar.childImageSharp.fixed.src : `https://via.placeholder.com/150`
 
-    console.log(data.posts)
     const posts = data.posts.edges
 
     return (
@@ -50,8 +49,6 @@ const Author = ({ data, location, pageContext }) => {
                     <section className="post-feed">
                         {posts.map(({ node }) => {
                             // The tag below includes the markup for each post - components/common/PostCard.js
-                            console.log("node.frontmatter.author", node.frontmatter.author.frontmatter.author_id)
-                            console.log("author.author_id", author.author_id)
                             if (node.frontmatter.author) {
                                 if (node.frontmatter.author.frontmatter.author_id === author.author_id) {
                                     return (
@@ -141,7 +138,6 @@ query authorArticlesQuery($slug: String!) {
                       }
                     }
                 }
-                tags
                 category {
                     id
                     slug
