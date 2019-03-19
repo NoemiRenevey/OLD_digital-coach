@@ -104,6 +104,16 @@ module.exports = {
             options: {
                 plugins: [
                     `gatsby-remark-reading-time`,
+                    {
+                        resolve: `gatsby-remark-prismjs`,
+                        options: {
+                            classPrefix: "language-",
+                            inlineCodeMarker: null,
+                            aliases: {},
+                            showLineNumbers: false,
+                            noInlineHighlight: false,
+                        },
+                    },
                 ],
             },
         },
