@@ -3,8 +3,10 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 const _ = require(`lodash`)
+
 import { MdTimelapse } from "react-icons/md"
 import { FaCheck } from "react-icons/fa"
+
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { colors } from '../../styles/constants'

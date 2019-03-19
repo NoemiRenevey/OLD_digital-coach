@@ -661,13 +661,6 @@ h6 {
 /* Header
 /* ---------------------------------------------------------- */
 
-.site-head {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #fff;
-    background: var(--color-base);
-}
-
 .site-nav-item {
     display: inline-block;
     padding: 5px 10px;

@@ -7,6 +7,10 @@ import Img from 'gatsby-image'
 import { Navigation } from '.'
 import config from '../../utils/siteConfig'
 
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
+import { colors } from '../../styles/constants'
+
 // Styles
 import '../../styles/app.css'
 
@@ -34,7 +38,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 
                 <div className="viewport-top">
                     {/* The main header section on top of the screen */}
-                    <header className="site-head">
+                    <header css={siteHead}>
                         <div className="container">
                             <div className="site-mast">
                                 <div className="site-mast-left">
@@ -46,7 +50,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </Link>
                                 </div>
                                 <div className="site-mast-right">
-                                    {console.log("twi", twitter)}
                                     { twitter && <a href={ twitter } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/twitter.svg" alt="Twitter" /></a>}
                                     { facebook && <a href={ facebook } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/facebook.svg" alt="Facebook" /></a>}
                                     <a className="site-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/rss.svg" alt="RSS Feed" /></a>
@@ -137,3 +140,29 @@ const DefaultLayoutSettingsQuery = props => (
 )
 
 export default DefaultLayoutSettingsQuery
+
+/**
+ * CSS
+ */
+
+const siteHead = css`
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    // background: ${colors.black};
+    background: linear-gradient(-45deg, ${colors.accent}, ${colors.accent2}, ${colors.accent3});
+    background-size: 400% 400%;
+    animation: Gradient 10s ease infinite;
+
+    @keyframes Gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+`
