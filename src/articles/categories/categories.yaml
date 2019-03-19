@@ -1,15 +1,20 @@
 - id: webmarketing
   slug: webmarketing-strategie-digitale
-  short_title: 1 - Webmarketing
+  short_title: Webmarketing
   title: Gérez votre stratégie webmarketing
-  intro: Stratégie Webmarketing
+  intro: Une stratégie digitale réaliste est la clé de voute de votre présence en ligne. Suivez le guide pour définir/affiner votre stratégie digitale, et en déduire vos actions webmarketing. La création de vos [contenus](www.google.com) et l'optimisation de votre site internet en découlera naturellement.
 - id: contenu
   slug: creation-de-contenu
-  short_title: 2 - Contenu
+  short_title: Contenu
   title: Créer du Contenu
   intro: Page sur la Création de Contenu 
 - id: website
   slug: optimisation-de-site-web
-  short_title: 3 - Site Web
+  short_title: Site Web
   title: Créer ou améliorer son site web
   intro: Optimisation web 
+- id: digitalisation
+  slug: digitalisation-entreprise
+  short_title: Digitalisation
+  title: Digitaliser son entreprise
+  intro: Digitalisation intro

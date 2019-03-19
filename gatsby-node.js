@@ -18,6 +18,7 @@ exports.createPages = ({ graphql, actions }) => {
         const postTemplate = path.resolve(`./src/templates/post.js`)
         const indexTemplate = path.resolve(`./src/templates/index.js`)
         const goalTemplate = path.resolve(`./src/templates/goal.js`)
+        const categoryTemplate = path.resolve(`./src/templates/category.js`)
         resolve(
             graphql(`
               query allArticles {
@@ -29,6 +30,10 @@ exports.createPages = ({ graphql, actions }) => {
                         slug
                         goals {
                             id
+                        }
+                        category {
+                            id
+                            slug
                         }
                       }
                     }
@@ -62,7 +67,7 @@ exports.createPages = ({ graphql, actions }) => {
                     })
                 })
 
-                // create tags pages
+                // 1. Create tags (goal) pages
                 let goals = []
 
                 _.each(items, (edge) => {
@@ -81,6 +86,29 @@ exports.createPages = ({ graphql, actions }) => {
                         component: goalTemplate,
                         context: {
                             goal,
+                        },
+                    })
+                })
+
+                // 2. Create category pages
+                let categories = []
+
+                _.each(items, (edge) => {
+                    if (_.get(edge, `node.frontmatter.category`)) {
+                        categories = categories.concat(edge.node.frontmatter.category.slug)
+                    }
+                })
+
+                // Eliminate duplicate categories (contains slugs)
+                categories = _.uniq(categories)
+
+                // Make category pages
+                categories.forEach((category) => {
+                    createPage({
+                        path: `/${_.kebabCase(category)}/`,
+                        component: categoryTemplate,
+                        context: { //slug
+                            category,
                         },
                     })
                 })
