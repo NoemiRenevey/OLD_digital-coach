@@ -91,6 +91,7 @@ export const pageQuery = graphql`
                         }
                         complexity
                         tools {
+                            id
                             name
                             logo {
                                 childImageSharp {
