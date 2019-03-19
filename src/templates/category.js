@@ -9,7 +9,6 @@ import { MetaData } from '../components/common/meta'
 import { jsx, css } from '@emotion/core'
 import { colors } from '../styles/constants'
 
-
 /**
 * Goal page (/:slug)
 */
@@ -140,4 +139,6 @@ query categoryQuery($category: String) {
 const introSection = css`
   font-size: 2rem;
   line-height: 4rem;
+  color: ${colors.midgrey};
+  margin-bottom: 60px;
 `
