@@ -87,3 +87,13 @@ export const postQuery = graphql`
         }
     }
 `
+
+// content
+
+// post-feature-image
+
+// post-full-content
+
+// content-title
+
+// content-body

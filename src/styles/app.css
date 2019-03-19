@@ -364,7 +364,7 @@ ul,
 ol,
 dl,
 blockquote {
-    margin: 0 0 1.5em 0;
+    margin: 0 0 .8em 0;
 }
 
 ol,
@@ -415,13 +415,14 @@ dd {
 blockquote {
     margin: 0.3em 0 1.8em;
     padding: 0 1.6em 0 1.6em;
-    border-left: #cbeafb 0.5em solid;
+    border-left: #FF4208 0.2em solid;
 }
 
 blockquote p {
     margin: 0.8em 0;
     font-size: 1.2em;
     font-weight: 300;
+    color: #FF4208;
 }
 
 blockquote small {
@@ -532,7 +533,7 @@ h6 {
 
 .content {
     margin: 0 auto;
-    font-size: 2rem;
+    font-size: 1.7rem;
     line-height: 1.7em;
 }
 
@@ -543,7 +544,7 @@ h6 {
 }
 
 .post-full-content {
-    max-width: 720px;
+    max-width: 800px;
     margin: 0 auto;
     background: #fff;
 }
@@ -932,4 +933,32 @@ h6 {
 
 .site-foot-nav-right a:last-child {
     padding-right: 0;
+}
+
+/*
+* Tables
+* https://github.com/sindresorhus/github-markdown-css/blob/gh-pages/github-markdown.css
+*/
+
+table {
+    margin-bottom: 20px;
+}
+
+table th {
+    font-weight: 600;
+}
+
+table td,
+table th {
+    border: 1px solid #dfe2e5;
+    padding: 6px 13px;
+}
+
+table tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+}
+
+table tr:nth-child(2n) {
+    background-color: #f6f8fa;
 }
