@@ -95,8 +95,8 @@ export const pageQuery = graphql`
                             name
                             logo {
                                 childImageSharp {
-                                    fixed {
-                                        src
+                                    fixed(width: 50, height: 50) {
+                                        ...GatsbyImageSharpFixed_withWebp
                                     }
                                 }
                             }
