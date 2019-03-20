@@ -1075,6 +1075,12 @@ table tr:nth-child(2n) {
 /*
 * SVG ANCHOR
 */
+.svg-anchor {
+    float: left;
+    padding-right: 0px;
+    margin-left: -30px;
+}
+
 .svg-anchor:hover svg {
     fill: #FF4208;
 }
