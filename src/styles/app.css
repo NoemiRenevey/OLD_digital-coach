@@ -654,7 +654,7 @@ h6 {
     line-height: 1.4em;
     white-space: pre-wrap;
     padding: 20px;
-    background: var(--color-base);
+    background: #001628;
     color: #fff;
     border-radius: 12px;
 }
@@ -964,7 +964,7 @@ table tr:nth-child(2n) {
 }
 
 /*
-* 
+*  CODE
 */
 
 :not(pre) > code[class*="language-"] {
@@ -973,4 +973,108 @@ table tr:nth-child(2n) {
     padding: .4rem .8rem;
     text-shadow: none;
     font-size: 1.4rem;
+}
+
+.gatsby-highlight {
+    position: relative;
+    overflow: auto;
+}
+
+.gatsby-highlight pre[class*='language-']::before {
+    background: #ddd;
+    border-radius: 0 0 2px 2px;
+    padding: 4px 10px 2px;
+    position: absolute;
+    font-size: 1rem;
+    text-shadow: none;
+    right: 20px;
+    text-align: right;
+    text-transform: uppercase;
+    top: 4px;
+    font-weight: 700;
+}
+.gatsby-highlight pre[class='language-javascript']::before {
+    content: 'javascript';
+    background: #f7df1e;
+}
+
+.gatsby-highlight pre[class='language-js']::before {
+    content: 'javascript';
+    background: #f7df1e;
+}
+
+.gatsby-highlight pre[class='language-jsx']::before {
+    content: 'jsx';
+    background: #61dafb;
+}
+
+.gatsby-highlight pre[class='language-graphql']::before {
+    content: 'GraphQL';
+    background: #E10098;
+    color: white;
+    font-weight: 400;
+}
+
+.gatsby-highlight pre[class='language-html']::before {
+    content: 'html';
+    background: #005A9C;
+    color: white;
+    font-weight: 400;
+}
+
+.gatsby-highlight pre[class='language-css']::before {
+    content: 'css';
+    background: #ff9800;
+    color: white;
+    font-weight: 400;
+}
+
+.gatsby-highlight pre[class='language-shell']::before {
+    content: 'shell';
+}
+
+.gatsby-highlight pre[class='language-sh']::before {
+    content: 'sh';
+}
+
+.gatsby-highlight pre[class='language-bash']::before {
+    content: 'bash';
+}
+
+.gatsby-highlight pre[class='language-yaml']::before {
+    content: 'yaml';
+    background: #ffa8df;
+}
+
+.gatsby-highlight pre[class='language-markdown']::before {
+    content: 'markdown';
+}
+
+.gatsby-highlight pre[class='language-json']::before,
+.gatsby-highlight pre[class='language-json5']::before {
+    content: 'json';
+    background: linen;
+}
+
+.gatsby-highlight pre[class='language-diff']::before {
+    content: 'diff';
+    background: #e6ffed;
+}
+
+.gatsby-highlight pre[class='language-text']::before {
+    content: 'text';
+    background: rgb(5, 151, 219);
+}
+
+.gatsby-highlight pre[class='language-flow']::before {
+    content: 'flow';
+    background: #E8BD36;
+}
+
+
+/*
+* SVG ANCHOR
+*/
+.svg-anchor:hover svg {
+    fill: #FF4208;
 }
