@@ -543,6 +543,13 @@ h6 {
     font-family: var(--font-serif);
 }
 
+.content-intro {
+    font-size: 2rem;
+    line-height: 4rem;
+    color: #738a94;
+    margin-bottom: 60px;
+}
+
 .post-full-content {
     max-width: 800px;
     margin: 0 auto;

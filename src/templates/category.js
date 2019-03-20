@@ -28,7 +28,7 @@ const Category = ({ data, location, pageContext }) => {
                     <header className="tag-header">
                         <h1>{category.title}</h1>
                     </header>
-                    <section css={introSection}><p>{category.intro}</p></section>
+                    <p className="content-intro">{category.intro}</p>
                     <section className="post-feed">
                         {posts.map(({ node }) => {
                             // The tag below includes the markup for each post - components/common/PostCard.js
@@ -134,11 +134,4 @@ query categoryQuery($category: String) {
       }
     }
   }
-`
-
-const introSection = css`
-  font-size: 2rem;
-  line-height: 4rem;
-  color: ${colors.midgrey};
-  margin-bottom: 60px;
 `

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 // import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
@@ -12,7 +12,19 @@ import { MetaData } from '../components/common/meta'
 *
 */
 const Post = ({ data, location }) => {
-    const post = data.allMarkdownRemark.edges[0].node
+    const postNode = data.allMarkdownRemark.edges[0].node
+    const {
+        title,
+        featured_image: featuredImage,
+        desc,
+        headings,
+        author,
+        tools,
+        goals,
+        category,
+        complexity,
+    } = postNode.frontmatter
+    const postContent = postNode.html
 
     return (
         <Fragment>
@@ -24,17 +36,23 @@ const Post = ({ data, location }) => {
             <Layout>
                 <div className="container">
                     <article className="content">
-                        { post.frontmatter.featured_image ?
+                        {featuredImage ?
                             <figure className="post-feature-image">
-                                <img src={ post.frontmatter.featured_image.childImageSharp.fixed.src } alt={ post.frontmatter.title } />
+                                <img src={ featuredImage.childImageSharp.fixed.src } alt={ title } />
                             </figure> : null }
                         <section className="post-full-content">
-                            <h1 className="content-title">{post.frontmatter.title}</h1>
+                            <h1 className="content-title">{title}</h1>
+                            <p className="content-intro">{desc}</p>
+                            <div>
+                                <div><Link to={`/${category.slug}`}>{category.short_title}</Link></div>
+                                <div>Difficulté {complexity}/3</div>
+                                <div>{goals.map(goal => (<span key={goal.id}>{goal.name}</span>))}</div>
+                            </div>
 
                             {/* The main post content */ }
                             <section
                                 className="content-body load-external-scripts"
-                                dangerouslySetInnerHTML={{ __html: post.html }}
+                                dangerouslySetInnerHTML={{ __html: postContent }}
                             />
                         </section>
                     </article>
@@ -62,6 +80,10 @@ export const postQuery = graphql`
         allMarkdownRemark(filter: {frontmatter: {slug: {eq: $slug}}, fileAbsolutePath: {regex: "\/articles/"}}) {
             edges {
                 node {
+                    headings {
+                        depth
+                        value
+                    }
                     frontmatter {
                         slug
                         date
@@ -79,6 +101,28 @@ export const postQuery = graphql`
                               author_id
                               slug
                             }
+                        }
+                        category {
+                            id
+                            slug
+                            short_title
+                            intro
+                          }
+                        complexity
+                        tools {
+                            id
+                            name
+                            logo {
+                                childImageSharp {
+                                    fixed {
+                                        src
+                                    }
+                                }
+                            }
+                        }
+                        goals {
+                            id
+                            name
                         }
                     }
                     html
