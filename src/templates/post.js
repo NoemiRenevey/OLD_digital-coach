@@ -2,8 +2,16 @@ import React, { Fragment } from 'react'
 // import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 
+import { MdTimelapse } from "react-icons/md"
+import { FaGrinBeamSweat } from "react-icons/fa";
+
 import { Layout } from '../components/common'
-import { MetaData } from '../components/common/meta'
+// import { MetaData } from '../components/common/meta'
+
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
+import { colors } from '../styles/constants'
+import ToolsList from '../components/common/ToolsList'
 
 /**
 * Single post view (/:slug)
@@ -25,14 +33,15 @@ const Post = ({ data, location }) => {
         complexity,
     } = postNode.frontmatter
     const postContent = postNode.html
+    const readingTime = postNode.timeToRead
 
     return (
         <Fragment>
-            <MetaData
+            {/*<MetaData
                 data={data}
                 location={location}
                 type="article"
-            />
+            />*/}
             <Layout>
                 <div className="container">
                     <article className="content">
@@ -43,7 +52,17 @@ const Post = ({ data, location }) => {
                         <section className="post-full-content">
                             <h1 className="content-title">{title}</h1>
                             <p className="content-intro">{desc}</p>
-                            <div>
+                            <div css={contentBoilerplate}>
+                                <div css={boilerplateLeft}>
+                                    <ToolsList tools={tools} />
+                                </div>
+                                <div css={boilerplateRight}>
+                                    <div><MdTimelapse /> {readingTime} min</div>
+                                    <div><FaGrinBeamSweat /> Difficulté {complexity}/3</div>
+                                </div>
+                            </div>
+
+                            <div css={sidebarSection} >
                                 <div><Link to={`/${category.slug}`}>{category.short_title}</Link></div>
                                 <div>Difficulté {complexity}/3</div>
                                 <div>{goals.map(goal => (<span key={goal.id}>{goal.name}</span>))}</div>
@@ -114,8 +133,8 @@ export const postQuery = graphql`
                             name
                             logo {
                                 childImageSharp {
-                                    fixed {
-                                        src
+                                    fixed(width: 50, height: 50) {
+                                        ...GatsbyImageSharpFixed_withWebp
                                     }
                                 }
                             }
@@ -125,12 +144,19 @@ export const postQuery = graphql`
                             name
                         }
                     }
+                    timeToRead
                     html
                 }
             }
         }
     }
 `
+
+/**
+ * 
+ * CSS
+ * 
+ */
 
 // content
 
@@ -141,3 +167,36 @@ export const postQuery = graphql`
 // content-title
 
 // content-body
+
+const sidebarSection = css`
+    position: fixed;
+    left: 20px;
+    top: 40vh;
+    width: 200px;
+    background-color: ${colors.lightgrey};
+    border-radius: 10px;
+    padding: 20px;
+`
+
+const contentBoilerplate = css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0 6px 0;
+    color: ${colors.accent};
+`
+
+const boilerplateLeft = css`
+    display: flex;
+    align-items: center;
+`
+
+const boilerplateRight = css`
+    display: flex;
+    // flex-direction: column;
+    color: ${colors.midgrey};
+
+    div {
+        margin-left: 20px;
+    }
+`
