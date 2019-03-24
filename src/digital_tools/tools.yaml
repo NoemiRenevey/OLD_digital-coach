@@ -2,9 +2,9 @@
   name: Facebook Ads
   url: "https://facebook.com/ads"
   desc: Great tool for targeting users from Facebook and Instagram
-  logo: "./img/tool-logo.png"
+  logo: "./img/FacebookAds.png"
 - id: mailchimp
   name: Mailchimp
   url: "https://www.mailchimp.com"
   desc: Great tool for emailing
-  logo: "./img/tool-logo.png"
+  logo: "./img/Mailchimp.png"
