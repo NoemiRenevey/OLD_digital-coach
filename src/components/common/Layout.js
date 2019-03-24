@@ -12,7 +12,7 @@ import { jsx, css } from '@emotion/core'
 import { colors } from '../../styles/constants'
 
 // Styles
-import '../../styles/app.css'
+import '../../styles/app.scss'
 
 /**
 * Main layout component

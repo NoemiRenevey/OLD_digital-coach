@@ -655,26 +655,44 @@ h6 {
     font-weight: 700;
 }
 
-.content-body pre {
-    margin: 0.4em 0 1.8em;
-    font-size: 1.3rem;
-    line-height: 1.4em;
-    white-space: pre-wrap;
-    padding: 20px;
-    background: #fdfaf6;
-    /* background: #001628;
-    color: #fff; */
-    border-radius: 12px;
-}
+.content-body {
+    pre {
+        margin: 0.4em 0 1.8em;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        white-space: pre-wrap;
+        padding: 20px;
+        background: #fdfaf6;
+        /* background: #001628;
+        color: #fff; */
+        border-radius: 12px;
+    }
+    
+    .card {
+        margin: 20px -50px 40px;
+        padding: 20px 50px;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 0px 0px 0px 3px;
+        border-color: #FF4208;
+        box-shadow: 0px 5px 15px -2px rgba(10, 16, 34, 0.4);
+        position: relative;
 
-.content-body .card {
-    margin: 20px -50px 40px;
-    padding: 20px 50px;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 0px 0px 0px 3px;
-    border-color: #FF4208;
-    box-shadow: 0px 5px 15px -2px rgba(10, 16, 34, 0.4);
+        &.facebook::before {
+            position: absolute;
+            display: block;
+            content: "";
+            top: -25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            border: 1px solid white;
+            box-shadow: 0px 5px 5px -2px rgba(10, 16, 34, 0.2);
+            background: url("../digital_tools/img/Facebook.png");
+            background-size: cover;
+        }
+    }
 }
 
 /* Header
@@ -1000,6 +1018,7 @@ table tr:nth-child(2n) {
 
 .gatsby-highlight pre[class*='language-']::before {
     background: #ddd;
+    color: white;
     border-radius: 0 0 2px 2px;
     padding: 4px 10px 2px;
     position: absolute;
