@@ -657,12 +657,13 @@ h6 {
 
 .content-body pre {
     margin: 0.4em 0 1.8em;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     line-height: 1.4em;
     white-space: pre-wrap;
     padding: 20px;
-    background: #001628;
-    color: #fff;
+    background: #fdfaf6;
+    /* background: #001628;
+    color: #fff; */
     border-radius: 12px;
 }
 
