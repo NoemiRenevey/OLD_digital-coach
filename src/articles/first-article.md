@@ -2,7 +2,7 @@
 slug: "my-first-post"
 date: "2017-11-07"
 title: "My first blog post"
-desc: "Just a small description for the faint-hearted"
+desc: "Just a small description for the faint-hearted. Just a description for the big geeks out there, a small description to rule them all and in the darkness bind them. This is a case study of how we can use a static site generator like Gatsby to build out a web app with dynamic content."
 featured_image: "./img/sony-alpha-7.jpeg"
 author: Lyketil
 complexity: 1

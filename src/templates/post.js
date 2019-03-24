@@ -13,6 +13,8 @@ import { Layout } from '../components/common'
 import { jsx, css } from '@emotion/core'
 import { colors } from '../styles/constants'
 import ToolsList from '../components/common/ToolsList'
+import CategoryTag from '../components/common/CategoryTag'
+import GoalsTags from '../components/common/GoalsTags'
 
 /**
 * Single post view (/:slug)
@@ -52,9 +54,9 @@ const Post = ({ data, location }) => {
                                 <img src={ featuredImage.childImageSharp.fixed.src } alt={ title } />
                             </figure> : null }
                         <section className="post-full-content">
-                            <div css={metaCategory}><Link to={`/${category.slug}`}>{category.short_title}</Link></div>
+                            <CategoryTag category={category} />
                             <h1 className="content-title">{title}</h1>
-                            <div css={metaGoals}>{goals.map(goal => (<span key={goal.id}>{goal.name}</span>))}</div>
+                            {goals && <GoalsTags goals={goals} />}
                             <p className="content-intro">{desc}</p>
 
                             <div css={contentBoilerplate}>
@@ -202,9 +204,6 @@ const boilerplateRight = css`
     div {
         margin-left: 20px;
     }
-`
-
-const metaCategory = css`
 `
 
 const metaGoals = css`

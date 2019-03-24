@@ -4,13 +4,15 @@ import { Link } from 'gatsby'
 const _ = require(`lodash`)
 
 import { MdTimelapse } from "react-icons/md"
-import { FaCheck, FaFlask } from "react-icons/fa"
+import { FaCheck } from "react-icons/fa"
 
 import ToolsList from "./ToolsList"
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { colors } from '../../styles/constants'
+import CategoryTag from './CategoryTag'
+import GoalsTags from './GoalsTags'
 
 const PostCard = ({ post }) => {
     const url = `/${post.frontmatter.slug}/`
@@ -33,7 +35,7 @@ const PostCard = ({ post }) => {
                 }
                 <div css={cardWrapper}>
                     {category &&
-                        <span css={cardCategory}><Link to={`/${category.slug}`}><FaFlask />  {category.short_title}</Link></span>
+                        <CategoryTag category={category} />
                     }
                     <h2 css={cardTitle}>{title}</h2>
                 </div>
@@ -43,12 +45,7 @@ const PostCard = ({ post }) => {
                 <section css={cardExcerpt}>{excerpt}</section>
 
                 {goals &&
-                    <div css={cardGoals}>
-                        {goals.map((goal, i) => [
-                            i > 0 && `, `,
-                            <Link to={`/objectif/${_.kebabCase(goal.id)}/`} key={i}><FaCheck /> {goal.name}</Link>
-                        ])}
-                    </div>
+                    <GoalsTags goals={goals} />
                 }
                 <footer css={cardFooter}>
                     {tools && 
@@ -122,21 +119,6 @@ const cardImage = css`
     background-size: cover;
 `
 
-const cardCategory = css`
-    display: block;    
-    margin: 5px 0 2px;
-
-    a {
-        color: ${colors.midgrey};
-
-        :hover {
-            text-decoration: none;
-            color: ${colors.accent};
-            transition: color .2s linear;
-        }
-    }
-`
-
 const cardTitle = css`
     margin: 0 0 10px 0;
     padding: 0;
@@ -145,30 +127,6 @@ const cardTitle = css`
 const cardExcerpt = css`
     font-size: 1.6rem;
     line-height: 1.55em;
-`
-
-const cardGoals = css`
-    margin: 20px 0 20px;
-    font-size: 1.4rem;
-    line-height: 1.15em;
-    color: white;
-
-    a {
-        background-color: ${colors.whitegrey}; 
-        color: ${colors.midgrey};
-        padding: 4px 8px;
-        border-radius: 5px;
-
-        svg {
-            margin-bottom: 2px;
-        }
-
-        :hover {
-            text-decoration: none;
-            color: ${colors.accent};
-            transition: color .2s linear;
-        }
-    }
 `
 
 const cardFooter = css`
