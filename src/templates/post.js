@@ -54,7 +54,7 @@ const Post = ({ data, location }) => {
                                 <img src={ featuredImage.childImageSharp.fixed.src } alt={ title } />
                             </figure> : null }
                         <section className="post-full-content">
-                            <CategoryTag category={category} />
+                            {category && <CategoryTag category={category} />}
                             <h1 className="content-title">{title}</h1>
                             {goals && <GoalsTags goals={goals} />}
                             <p className="content-intro">{desc}</p>
@@ -189,6 +189,9 @@ const contentBoilerplate = css`
     justify-content: space-between;
     margin: 10px 0 6px 0;
     color: ${colors.accent};
+    padding: 20px 20px 15px;
+    border: 1px solid ${colors.whitegrey};
+    border-radius: 5px;
 `
 
 const boilerplateLeft = css`
