@@ -14,9 +14,7 @@ tools: ["facebook-ads", "mailchimp"]
 # Blablabla
 This is the intro
 
-Paragraphs are separated by a blank line.
-
-2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
+Paragraphs are separated by a blank line. 2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
 look like:
 
   * this one
@@ -37,30 +35,27 @@ in chapters 12--14"). Three dots ... will be converted to an ellipsis.
 Unicode is supported. ☺
 
 
+<div markdown="1" class="card">
 
-An h2 header
-------------
+### Step 3: An h2 header
 
-Here's a numbered list:
+Here is a box with a short description of what needs to be done. It uses the useful [div in markdown](https://css-tricks.com/little-stuff-markdown-always-forget-google/) technique from CSS tricks. You need to leave an empty line after the div. Here's a numbered list:
 
  1. first item
  2. second item
  3. third item
 
 Note again how the actual text starts at 4 columns in (4 characters
-from the left side). Here's a code sample:
-
-    # Let me re-iterate ...
-    for i in 1 .. 10 { do-something(i) }
-
-As you probably guessed, indented 4 spaces. By the way, instead of
-indenting the block, you can use delimited blocks, if you like:
+from the left side). As you probably guessed, indented 4 spaces. By the way, instead of
+indenting the block, you can use delimited blocks, if you like it better like this:
 
 ```javascript
 define foobar() {
     print "Welcome to flavor country!";
 }
 ```
+
+</div>
 
 (which makes copying & pasting easier). You can optionally mark the
 delimited block for Pandoc to syntax highlight it:
