@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 // import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
+const _ = require(`lodash`)
 
 import { MdTimelapse } from "react-icons/md"
 import { FaGrinBeamSweat } from "react-icons/fa";
@@ -22,10 +23,10 @@ import ToolsList from '../components/common/ToolsList'
 const Post = ({ data, location }) => {
     const postNode = data.allMarkdownRemark.edges[0].node
     const {
+        slug,
         title,
         featured_image: featuredImage,
         desc,
-        headings,
         author,
         tools,
         goals,
@@ -34,6 +35,7 @@ const Post = ({ data, location }) => {
     } = postNode.frontmatter
     const postContent = postNode.html
     const readingTime = postNode.timeToRead
+    const tableOfContents = postNode.tableOfContents
 
     return (
         <Fragment>
@@ -50,8 +52,11 @@ const Post = ({ data, location }) => {
                                 <img src={ featuredImage.childImageSharp.fixed.src } alt={ title } />
                             </figure> : null }
                         <section className="post-full-content">
+                            <div css={metaCategory}><Link to={`/${category.slug}`}>{category.short_title}</Link></div>
                             <h1 className="content-title">{title}</h1>
+                            <div css={metaGoals}>{goals.map(goal => (<span key={goal.id}>{goal.name}</span>))}</div>
                             <p className="content-intro">{desc}</p>
+
                             <div css={contentBoilerplate}>
                                 <div css={boilerplateLeft}>
                                     <ToolsList tools={tools} />
@@ -63,9 +68,7 @@ const Post = ({ data, location }) => {
                             </div>
 
                             <div css={sidebarSection} >
-                                <div><Link to={`/${category.slug}`}>{category.short_title}</Link></div>
-                                <div>Difficulté {complexity}/3</div>
-                                <div>{goals.map(goal => (<span key={goal.id}>{goal.name}</span>))}</div>
+                                <div dangerouslySetInnerHTML={{ __html: tableOfContents }} css={tableOfCont}/>
                             </div>
 
                             {/* The main post content */ }
@@ -99,10 +102,6 @@ export const postQuery = graphql`
         allMarkdownRemark(filter: {frontmatter: {slug: {eq: $slug}}, fileAbsolutePath: {regex: "\/articles/"}}) {
             edges {
                 node {
-                    headings {
-                        depth
-                        value
-                    }
                     frontmatter {
                         slug
                         date
@@ -146,6 +145,10 @@ export const postQuery = graphql`
                     }
                     timeToRead
                     html
+                    tableOfContents(
+                        pathToSlugField: "frontmatter.slug"
+                        maxDepth: 2
+                    )
                 }
             }
         }
@@ -199,4 +202,13 @@ const boilerplateRight = css`
     div {
         margin-left: 20px;
     }
+`
+
+const metaCategory = css`
+`
+
+const metaGoals = css`
+`
+
+const tableOfCont = css`
 `

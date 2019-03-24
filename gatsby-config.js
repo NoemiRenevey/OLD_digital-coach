@@ -130,6 +130,7 @@ module.exports = {
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
         // Use SASS with node-sass https://github.com/sass/node-sass
+        // https://www.gatsbyjs.org/packages/gatsby-plugin-sass/
         `gatsby-plugin-sass`,
         {
             resolve: `gatsby-source-ghost`,
