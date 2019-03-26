@@ -11,7 +11,7 @@ category: "webmarketing"
 tools: ["facebook-ads", "mailchimp"]
 ---
 
-# Blablabla
+# Level 1: Blablabla pour commencer l'article
 This is the intro. Paragraphs are separated by a blank line. 2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
 look like:
 
@@ -34,7 +34,7 @@ Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all in chapters
 
 <div markdown="1" class="card facebook">
 
-### Step 3: An h2 header
+### Level 3: An h2 header
 
 Here is a box with a short description of what needs to be done. It uses the useful [div in markdown](https://css-tricks.com/little-stuff-markdown-always-forget-google/) technique from CSS tricks. You need to leave an empty line after the div. Here's a numbered list:
 
@@ -75,7 +75,7 @@ for i in range(10):
     print(i)
 ~~~
 
-### An h3 header ###
+### Level 3: An h3 header for you to enjoy
 
 Now a nested list:
 
@@ -151,7 +151,7 @@ Reference-style:
 
 [logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
 
-## Tables
+## Level 2: Tables
 
 Colons can be used to align columns.
 
@@ -170,7 +170,7 @@ Markdown | Less | Pretty
 *Still* | `renders` | **nicely**
 1 | 2 | 3
 
-## Horizontal lists
+#### Level 4: Horizontal lists are super cool and to be used
 
 Three or more...
 
@@ -186,7 +186,7 @@ ___
 
 Underscores
 
-## Definition lists
+## Level 2: Definition lists
 
 Here's a definition list:
 
@@ -208,7 +208,7 @@ Here's a "line block" (note how whitespace is honored):
 |   Line too
 | Line tree
 
-## Equations
+## Level 2: Equations
 
 Inline math equation: $\omega = d\phi / dt$. Display
 math should get its own line like so:

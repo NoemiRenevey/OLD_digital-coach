@@ -53,7 +53,7 @@ const Post = ({ data, location }) => {
                             <figure className="post-feature-image">
                                 <img src={ featuredImage.childImageSharp.fixed.src } alt={ title } />
                             </figure> : null }
-                        <section className="post-full-content">
+                        <section css={postFullContent}>
                             {category && <CategoryTag category={category} />}
                             <h1 className="content-title">{title}</h1>
                             {goals && <GoalsTags goals={goals} />}
@@ -149,7 +149,7 @@ export const postQuery = graphql`
                     html
                     tableOfContents(
                         pathToSlugField: "frontmatter.slug"
-                        maxDepth: 2
+                        maxDepth: 3
                     )
                 }
             }
@@ -173,14 +173,46 @@ export const postQuery = graphql`
 
 // content-body
 
+const postFullContent = css`
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    position: relative;
+`
+
 const sidebarSection = css`
-    position: fixed;
-    left: 20px;
-    top: 40vh;
+    position: absolute;
+    left: -250px;
+    top: 0;
     width: 200px;
-    background-color: ${colors.lightgrey};
+    background-color: ${colors.whitegrey};
     border-radius: 10px;
     padding: 20px;
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            padding-left: 0;
+            line-height: 1.8rem;
+            font-size: 1.5rem;
+
+            a {
+                color: ${colors.midgrey};
+
+                :hover {
+                    text-decoration: none;
+                }
+            }
+
+            ul {
+                li {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
 `
 
 const contentBoilerplate = css`

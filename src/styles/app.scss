@@ -550,12 +550,6 @@ h6 {
     margin-bottom: 2.6rem;
 }
 
-.post-full-content {
-    max-width: 800px;
-    margin: 0 auto;
-    background: #fff;
-}
-
 .post-feature-image img {
     margin: 0 0 3vw;
     width: 100%;
@@ -655,6 +649,19 @@ h6 {
     font-weight: 700;
 }
 
+li.task-list-item {
+    input {
+        margin-right: 10px;
+        position: relative;
+        bottom: 2px;
+    }
+    ul & {
+        list-style: none;
+        padding-left: 0;
+        margin-left: -20px;
+    }
+}
+
 .content-body {
 
     pre {
@@ -670,7 +677,7 @@ h6 {
     }
     
     .card {
-        margin: 20px -50px 40px;
+        margin: 40px -50px 40px;
         padding: 20px 50px;
         border-radius: 10px;
         border-style: solid;
@@ -684,7 +691,7 @@ h6 {
             display: block;
             content: "";
             top: -25px;
-            right: 25px;
+            left: -27px;
             width: 50px;
             height: 50px;
             border-radius: 100px;
@@ -695,6 +702,8 @@ h6 {
         }
     }
 }
+
+
 
 /* Header
 /* ---------------------------------------------------------- */
