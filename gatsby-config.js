@@ -104,6 +104,7 @@ module.exports = {
             options: {
                 plugins: [
                     `gatsby-remark-reading-time`,
+                    `gatsby-remark-responsive-iframe`,
                     {   // https://www.gatsbyjs.org/packages/gatsby-remark-autolink-headers/
                         resolve: `gatsby-remark-autolink-headers`,
                         options: {

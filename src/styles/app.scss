@@ -663,6 +663,13 @@ li.task-list-item {
 }
 
 .content-body {
+    iframe.instagram-media-rendered {
+        margin: 20px auto 40px !important;
+    }
+
+    .gatsby-resp-iframe-wrapper {
+        margin: 20px 0 40px;
+    }
 
     pre {
         margin: 0.4em 0 1.8em;
@@ -1132,4 +1139,3 @@ table tr:nth-child(2n) {
 .svg-anchor:hover svg {
     fill: #FF4208;
 }
-
