@@ -15,6 +15,7 @@ import { colors } from '../styles/constants'
 import ToolsList from '../components/common/ToolsList'
 import CategoryTag from '../components/common/CategoryTag'
 import GoalsTags from '../components/common/GoalsTags'
+import Sidebar from '../components/common/Sidebar'
 
 /**
 * Single post view (/:slug)
@@ -69,9 +70,7 @@ const Post = ({ data, location }) => {
                                 </div>
                             </div>
 
-                            <div css={sidebarSection} >
-                                <div dangerouslySetInnerHTML={{ __html: tableOfContents }} css={tableOfCont}/>
-                            </div>
+                            <Sidebar table={tableOfContents} />
 
                             {/* The main post content */ }
                             <section
@@ -180,41 +179,6 @@ const postFullContent = css`
     position: relative;
 `
 
-const sidebarSection = css`
-    position: absolute;
-    left: -250px;
-    top: 0;
-    width: 200px;
-    background-color: ${colors.whitegrey};
-    border-radius: 10px;
-    padding: 20px;
-
-    ul {
-        list-style: none;
-        padding: 0;
-
-        li {
-            padding-left: 0;
-            line-height: 1.8rem;
-            font-size: 1.5rem;
-
-            a {
-                color: ${colors.midgrey};
-
-                :hover {
-                    text-decoration: none;
-                }
-            }
-
-            ul {
-                li {
-                    font-size: 1.4rem;
-                }
-            }
-        }
-    }
-`
-
 const contentBoilerplate = css`
     display: flex;
     align-items: center;
@@ -242,7 +206,4 @@ const boilerplateRight = css`
 `
 
 const metaGoals = css`
-`
-
-const tableOfCont = css`
 `
