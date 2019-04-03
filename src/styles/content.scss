@@ -1,0 +1,418 @@
+/*
+* Typography
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    color: var(--color-base);
+    line-height: 1.15;
+    font-weight: 700;
+    text-rendering: optimizeLegibility;
+}
+
+h1 {
+    margin: 0 0 0.5em 0;
+    font-size: 4rem;
+    font-weight: 700;
+    
+    @media (max-width: 500px) {
+        font-size: 2rem;
+    }
+}
+
+h2 {
+    margin: 1.5em 0 0.5em 0;
+    font-size: 2rem;
+
+    @media (max-width: 500px) {
+        font-size: 1.8rem;
+    }
+}
+
+h3 {
+    margin: 1.5em 0 0.5em 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+    
+    @media (max-width: 500px) {
+        font-size: 1.7rem;
+    }
+}
+
+h4 {
+    margin: 1.5em 0 0.5em 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+h5 {
+    margin: 1.5em 0 0.5em 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+h6 {
+    margin: 1.5em 0 0.5em 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+/*
+* Links
+*/
+
+a {
+    color: #26a8ed;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/*
+* Content
+* ----------------------------------------- */
+
+.content {
+    margin: 0 auto;
+    font-size: 1.7rem;
+    line-height: 1.7em;
+
+    @media (max-width: 500px) {
+        font-size: 1.8rem;
+    }
+}
+
+.content-body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-serif);
+}
+
+.content-intro {
+    font-size: 2rem;
+    line-height: 4rem;
+    color: #738a94;
+    margin-bottom: 2.6rem;
+}
+
+.post-feature-image img {
+    margin: 0 0 3vw;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.content-body {
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-sans-serif);
+    }
+
+    h1 {
+        margin: 1.0em 0 0.5em 0;
+        font-size: 3.4rem;
+        font-weight: 700;
+        
+        @media (max-width: 500px) {
+            font-size: 2.8rem;
+        }
+    }
+
+    h2 {
+        margin: 0.8em 0 0.4em 0;
+        font-size: 3.2rem;
+        font-weight: 700;
+        
+        @media (max-width: 500px) {
+            font-size: 2.6rem;
+        }
+    }
+
+    h3 {
+        margin: 0.5em 0 0.2em 0;
+        font-size: 2.8rem;
+        font-weight: 700;
+        
+        @media (max-width: 500px) {
+            font-size: 2.2rem;    
+        }
+    }
+
+    h4 {
+        margin: 0.5em 0 0.2em 0;
+        font-size: 2.4rem;
+        font-weight: 700;
+        
+        @media (max-width: 500px) {
+            font-size: 2.2rem;
+        }
+    }
+
+    h5 {
+        display: block;
+        margin: 0.5em 0;
+        padding: 1em 0 1.5em;
+        border: 0;
+        font-family: Georgia,serif;
+        color: var(--color-primary);
+        font-style: italic;
+        font-size: 3.2rem;
+        line-height: 1.35em;
+        text-align: center;
+    }
+
+    h6 {
+        margin: 0.5em 0 0.2em 0;
+        font-size: 2.0rem;
+        font-weight: 700;
+    }
+
+    figure {
+        margin: 0.4em 0 1.6em;
+        font-size: 2.8rem;
+        font-weight: 700;
+    }
+
+    iframe.instagram-media-rendered {
+        margin: 20px auto 40px !important;
+    }
+
+    .gatsby-resp-iframe-wrapper {
+        margin: 20px 0 40px;
+    }
+
+    pre {
+        margin: 0.4em 0 1.8em;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        white-space: pre-wrap;
+        padding: 20px;
+        background: #fdfaf6;
+        /* background: #001628;
+        color: #fff; */
+        border-radius: 12px;
+    }
+    
+    .card {
+        margin: 40px -50px 40px;
+        padding: 20px 50px;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 0px 0px 0px 3px;
+        border-color: #FF4208;
+        box-shadow: 0px 5px 15px -2px rgba(10, 16, 34, 0.4);
+        position: relative;
+
+        &.facebook::before {
+            position: absolute;
+            display: block;
+            content: "";
+            top: -25px;
+            left: -27px;
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            border: 1px solid white;
+            box-shadow: 0px 5px 5px -2px rgba(10, 16, 34, 0.2);
+            background: url("../digital_tools/img/Facebook.png");
+            background-size: cover;
+        }
+    }
+}
+
+
+.content-title {
+    margin: 0 0 0.3em;
+    font-size: 5rem;
+    
+    @media (max-width: 500px) {
+        margin: 0.2em 0;
+        font-size: 3.4rem;
+    }
+}
+
+
+li.task-list-item {
+    input {
+        margin-right: 10px;
+        position: relative;
+        bottom: 2px;
+    }
+    ul & {
+        list-style: none;
+        padding-left: 0;
+        margin-left: -20px;
+    }
+}
+
+/*
+* Tables
+* https://github.com/sindresorhus/github-markdown-css/blob/gh-pages/github-markdown.css
+*/
+
+table {
+    margin-bottom: 20px;
+
+    th {
+        font-weight: 600;
+    }
+
+    td, th {
+        border: 1px solid #dfe2e5;
+        padding: 6px 13px;
+    }
+
+    tr {
+        background-color: #fff;
+        border-top: 1px solid #c6cbd1;
+
+        &:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+    }
+}
+
+/*
+*  CODE
+*/
+
+:not(pre) > code[class*="language-"] {
+    background-color: #f2f7fa;
+    color: #738a94;
+    padding: .4rem .8rem;
+    text-shadow: none;
+    font-size: 1.4rem;
+}
+
+.gatsby-highlight {
+    position: relative;
+    overflow: auto;
+
+    pre[class*='language-']::before {
+        background: #ddd;
+        color: white;
+        border-radius: 0 0 2px 2px;
+        padding: 4px 10px 2px;
+        position: absolute;
+        font-size: 1rem;
+        text-shadow: none;
+        right: 20px;
+        text-align: right;
+        text-transform: uppercase;
+        top: 4px;
+        font-weight: 700;
+    }
+
+    pre[class='language-javascript']::before {
+        content: 'javascript';
+        background: #f7df1e;
+    }
+
+    pre[class='language-js']::before {
+        content: 'javascript';
+        background: #f7df1e;
+    }
+    
+    pre[class='language-graphql']::before {
+        content: 'GraphQL';
+        background: #E10098;
+        color: white;
+        font-weight: 400;
+    }
+    
+    pre[class='language-html']::before {
+        content: 'html';
+        background: #005A9C;
+        color: white;
+        font-weight: 400;
+    }
+    
+    pre[class='language-css']::before {
+        content: 'css';
+        background: #ff9800;
+        color: white;
+        font-weight: 400;
+    }
+
+    pre[class='language-bash']::before {
+        content: 'bash';
+    }
+
+    pre[class='language-yaml']::before {
+        content: 'yaml';
+        background: #ffa8df;
+    }
+
+    pre[class='language-markdown']::before {
+        content: 'markdown';
+    }
+
+    pre[class='language-json']::before {
+        content: 'json';
+        background: #ffa8df;
+    }
+
+    pre[class='language-text']::before {
+        content: 'text';
+        background: rgb(5, 151, 219);
+    }
+
+    pre[class='language-php']::before {
+        content: 'text';
+        background: rgb(5, 151, 219);
+    }
+}
+
+/*
+* SVG ANCHOR
+*/
+.svg-anchor {
+    float: left;
+    padding-right: 0px;
+    margin-left: -30px;
+
+    &:hover svg {
+        fill: #FF4208;
+    }
+}
+
+/* 
+* Blockquotes 
+*/
+
+blockquote {
+    margin: 0.3em 0 1.8em;
+    padding: 0 1.6em 0 1.6em;
+    border-left: #FF4208 0.2em solid;
+}
+
+blockquote p {
+    margin: 0.8em 0;
+    font-size: 1.2em;
+    font-weight: 300;
+    color: #FF4208;
+}
+
+blockquote small {
+    display: inline-block;
+    margin: 0.8em 0 0.8em 1.5em;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+/* Quotation marks */
+blockquote small:before {
+    content: "\2014 \00A0";
+}
+
+blockquote cite {
+    font-weight: bold;
+}
+blockquote cite a {
+    font-weight: normal;
+}
