@@ -92,6 +92,7 @@ const postCard = css`
     border: 1px solid ${colors.whitegrey};
     border-radius: 5px;
     color: inherit;
+    background-color: white;
     text-decoration: none;
     box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
     transition: all 0.5s ease;
@@ -121,6 +122,8 @@ const cardImage = css`
 
 const cardTitle = css`
     margin: 0 0 10px 0;
+    text-align: left;
+    font-size: 2rem;
     padding: 0;
 `
 

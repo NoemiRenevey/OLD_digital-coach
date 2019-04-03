@@ -9,6 +9,7 @@ import { Layout, PostCard, Pagination } from '../components/common'
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { colors } from '../styles/constants'
+import { white } from 'ansi-colors';
 
 /**
 * Main index page (home page)
@@ -26,12 +27,12 @@ const Index = ({ data, location, pageContext }) => {
         <Fragment>
             {/*<MetaData location={location} />*/}
             <Layout isHome={true}>
-                <div className="container">
+                <div className="container" css={homePage}>
                     <section css={productPitch}>
                         <div css={leftProductPitch}>
                             <h3>En Bref!</h3>
                             <h2>Développez votre business grâce à internet... en toute autonomie</h2>
-                            <p>Mettez en place nos "recettes digitales", elles décrivent précisément quoi faire pour atteindre un objectif donné. Il n'y a plus qu'à suivre la méthode : vous (ou votre équipe) devenez indépendant.</p>
+                            <p className="big">Mettez en place nos "recettes digitales", elles décrivent précisément quoi faire pour atteindre un objectif donné. Il n'y a plus qu'à suivre la méthode : vous (ou votre équipe) devenez indépendant.</p>
                             <div css={perfectSolution}>
                                 <h4>La solution parfaite pour ceux qui...</h4>
                                 <ul>
@@ -42,17 +43,24 @@ const Index = ({ data, location, pageContext }) => {
                             </div>
                         </div>
                         <div css={rightProductPitch}>
-                            <img src="https://place-hold.it/300x300" alt="placeholder"/>
+                            <div css={imagePitch}>
+                                <img src="https://place-hold.it/300x300" alt="placeholder"/>
+                            </div>
                         </div>
                     </section>
 
-                    <section className="post-feed">
-                        {posts.map(({ node }) => (
-                            // The tag below includes the markup for each post - components/common/PostCard.js
-                            <PostCard key={node.id} post={node} />
-                        ))}
+                    <section css={popularArticles}>
+                        <div css={popularIntro}>
+                            <h2>Quelques recettes populaires</h2>
+                            <p className="big">Suivez nos guides : il suffit d'appliquer nos recettes point par point, afin d'obtenir le résultat souhaité. Une sélection de recettes les plus appréciées ci-dessous.</p>
+                        </div>
+                        <div className="post-feed">                        
+                            {posts.map(({ node }) => (
+                                // The tag below includes the markup for each post - components/common/PostCard.js
+                                <PostCard key={node.id} post={node} />
+                            ))}
+                        </div>
                     </section>
-                    <Pagination pageContext={pageContext} />
                 </div>
             </Layout>
         </Fragment>
@@ -75,6 +83,16 @@ export default Index
  * CSS
  * 
  */
+const homePage = css`
+    h3 {
+        margin-top: 0;
+    }
+
+    h2 {
+        margin-top: .2rem;
+    }
+`
+
 const productPitch = css`
     display: flex;
     justify-content: space-between;
@@ -84,20 +102,7 @@ const productPitch = css`
 const leftProductPitch = css`
     flex-grow: 2;
     flex-basis: 0;
-
-    h3 {
-        margin-top: 0;
-    }
-
-    h2 {
-        margin-top: .2rem;
-        font-size: 3.6rem;
-    }
-
-    p {
-        font-size: 1.8rem;
-        line-height: 2.6rem;
-    }
+    max-width: 600px;
 `
 
 const perfectSolution = css`
@@ -108,6 +113,28 @@ const rightProductPitch = css`
     flex-basis: 0;
     flex-grow: 1;
 `
+
+const imagePitch = css`
+    text-align: right;
+`
+
+const popularArticles = css`
+    background-color: ${colors.whitegrey};
+    padding: 40px;
+    margin: 0 -80px;
+    border-radius: 10px;
+`
+
+const popularIntro = css`
+    text-align: center;
+    margin-bottom: 50px;
+`
+
+/**
+ * 
+ * Query
+ * 
+ */
 
 export const pageQuery = graphql`
     query MarkdownArticlesQuery {
