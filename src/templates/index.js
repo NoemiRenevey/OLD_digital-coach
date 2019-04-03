@@ -6,10 +6,11 @@ import { Layout, PostCard, Pagination } from '../components/common'
 // import { MetaData } from '../components/common/meta'
 // import { postFields } from '../utils/fragments'
 
+import EventCard from '../components/common/EventCard'
+
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { colors } from '../styles/constants'
-import { white } from 'ansi-colors';
 
 /**
 * Main index page (home page)
@@ -21,7 +22,8 @@ import { white } from 'ansi-colors';
 */
 const Index = ({ data, location, pageContext }) => {
     // const posts = data.allGhostPost.edges
-    const posts = data.allMarkdownRemark.edges
+    const posts = data.articles.edges
+    const events = data.events.edges
 
     return (
         <Fragment>
@@ -58,6 +60,19 @@ const Index = ({ data, location, pageContext }) => {
                             {posts.map(({ node }) => (
                                 // The tag below includes the markup for each post - components/common/PostCard.js
                                 <PostCard key={node.id} post={node} />
+                            ))}
+                        </div>
+                    </section>
+
+                    <section css={eventsSection}>
+                        <div css={eventsIntro}>
+                            <h2>Rendez-Vous! Checkpoints Activation</h2>
+                            <p className="big">Besoin d'un coup de boost, de poser des questions, et de partager vos expériences d'activation digitale avec le reste de la communauté ? Rejoignez-nous lors des événements ou des Webinars/LIVE.</p>
+                        </div>
+                        <div css={eventsFeed}>
+                            {events.map(({ node }) => (
+                                // Include the markup for each event - components/common/EventCard.js
+                                <EventCard key={node.slug} event={node} />
                             ))}
                         </div>
                     </section>
@@ -118,6 +133,8 @@ const imagePitch = css`
     text-align: right;
 `
 
+// Popular Articles
+
 const popularArticles = css`
     background-color: ${colors.whitegrey};
     padding: 40px;
@@ -130,6 +147,22 @@ const popularIntro = css`
     margin-bottom: 50px;
 `
 
+// Events
+
+const eventsSection = css`
+    margin-top: 50px;
+`
+
+const eventsIntro = css`
+    text-align: left;
+`
+
+const eventsFeed = css`
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px -20px;
+`
+
 /**
  * 
  * Query
@@ -137,8 +170,8 @@ const popularIntro = css`
  */
 
 export const pageQuery = graphql`
-    query MarkdownArticlesQuery {
-        allMarkdownRemark(filter: {
+    query IndexQuery {
+        articles: allMarkdownRemark(filter: {
             fileAbsolutePath: {regex : "\/articles/"}
         }) {
             edges {
@@ -194,6 +227,22 @@ export const pageQuery = graphql`
                     }
                     timeToRead
                 }
+            }
+        }
+        events: allEventsYaml {
+            edges {
+              node {
+                slug
+                name
+                excerpt
+                date
+                location
+                city
+                type
+                address
+                link
+                link_cta
+              }
             }
         }
     }

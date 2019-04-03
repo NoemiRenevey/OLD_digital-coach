@@ -76,7 +76,7 @@ module.exports = {
                 name: `authors`,
             },
         },
-        // Setup for YAML categories and tools
+        // Setup for YAML content
         // See https://www.gatsbyjs.org/packages/gatsby-transformer-yaml/
         `gatsby-transformer-yaml`,
         {
@@ -95,6 +95,12 @@ module.exports = {
             resolve: `gatsby-source-filesystem`,
             options: {
                 path: `./src/digital_tools/`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `./src/events/`,
             },
         },
         // Transform markdown to HTML
