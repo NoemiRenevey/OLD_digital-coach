@@ -9,4 +9,5 @@ export const colors = {
     whitegrey: `#f2f7fa`,
     white: `#fff`,
     black: `#000`,
+    gradient1: `linear-gradient(to right, #FF4208 0%, #dc037a 51%, #FF4208 100%)`,
 }

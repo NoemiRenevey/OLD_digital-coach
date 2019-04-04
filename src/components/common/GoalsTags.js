@@ -26,16 +26,18 @@ const cardGoals = css`
     line-height: 1.15em;
     color: white;
     position: absolute;
-    top: 13px;
+    top: 9px;
     left: 8px;
 
     a {
-        background-color: ${colors.whitegrey}; 
-        color: ${colors.midgrey};
+        background-image: ${colors.gradient1}; 
+        color: white;
         padding: 4px 8px;
         border-radius: 5px;
         display: inline-block;
         margin: 0 3px 3px 0;
+        transition: 0.5s;
+        background-size: 200% auto;
 
         svg {
             margin-bottom: 2px;
@@ -43,8 +45,9 @@ const cardGoals = css`
 
         :hover {
             text-decoration: none;
-            color: ${colors.accent};
-            transition: color .2s linear;
+            // color: ${colors.accent};
+            // transition: color .2s linear;
+            background-position: right center;
         }
     }
 `
