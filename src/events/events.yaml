@@ -15,3 +15,15 @@
   type: webinar
   link: https://webinar.me.now
   link_cta: Réserver une place
+# - slug: session-mentoring-privee
+#   name: Session Mentoring Privée
+#   excerpt: "Réservez une session privée pour faire le point sur votre avancement et vous aider à aller plus loin."
+#   type: mentoring
+#   link: https://session-privee.me.now
+#   link_cta: Réserver le mentoring
+- slug: open-hours
+  name: Open Hours
+  excerpt: "Rejoignez la communauté pour une heure d'échange et de discussion: vos succès, vos challenges. Le moment parfait pour s'inspirer des expériences digitales des autres membres de la communauté."
+  type: open-hours
+  link: https://session-privee.me.now
+  link_cta: Participer à l'Open Hour 

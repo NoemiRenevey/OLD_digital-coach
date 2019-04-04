@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MdConfirmationNumber, MdLiveTv, MdLocationCity } from "react-icons/md";
+import { MdConfirmationNumber, MdLiveTv, MdLocationCity, MdHeadsetMic, MdGroupAdd } from "react-icons/md";
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -24,6 +24,10 @@ const EventCard = ({ event }) => {
             return <span><MdLocationCity /> Événement</span>
         case `webinar`:
             return <span><MdLiveTv /> Webinar</span>
+        case `mentoring`:
+            return <span><MdHeadsetMic /> Suivi Privé</span>   
+        case `open-hours`:
+            return <span><MdGroupAdd /> Open Hours</span>        
         default:
             return null
         }
@@ -32,7 +36,10 @@ const EventCard = ({ event }) => {
     return (
         <div css={eventCard} className="slideInUp">
             <div css={eventMeta}>
-                {eventType(type)} le <span>{eventDate}</span>
+                {eventType(type)} 
+                {eventDate && 
+                    <span>{` le ${eventDate}`}</span>
+                }
             </div>
             <h4>{eventName}</h4>
             <p>{excerpt}</p>
