@@ -65,3 +65,33 @@
     color: var(--color-secondary);
     font-size: 1.3rem;
 }
+
+
+/*
+* Cards Layout
+--------------------------------*/
+.slideInUp {
+    top: 0;
+    position: relative;
+    visibility: visible;
+    transition: all .3s ease-in-out;
+    animation-duration: 0.5s;
+    animation-name: slideInUp;
+
+    &:hover {
+        top: -8px;
+        box-shadow: rgba(39, 44, 49, 0.2) 1px 6px 12px;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+      transform: translate3d(0, 100%, 0);
+      visibility: visible;
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+}
+  

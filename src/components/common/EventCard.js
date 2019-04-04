@@ -30,7 +30,7 @@ const EventCard = ({ event }) => {
     } 
 
     return (
-        <div css={eventCard}>
+        <div css={eventCard} className="slideInUp">
             <div css={eventMeta}>
                 {eventType(type)} le <span>{eventDate}</span>
             </div>
