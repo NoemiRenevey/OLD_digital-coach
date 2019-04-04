@@ -9,7 +9,7 @@ const ProductPitch = () => {
         <section css={productPitch}>
             <div css={leftProductPitch}>
                 <h3>En Bref!</h3>
-                <h2>Développez votre business grâce à internet... en toute autonomie</h2>
+                <h2>Développez votre business grâce au digital... en toute autonomie</h2>
                 <p className="big">Mettez en place nos "recettes digitales", elles décrivent précisément quoi faire pour atteindre un objectif donné. Il n'y a plus qu'à suivre la méthode : vous (ou votre équipe) devenez indépendant.</p>
                 <div css={perfectSolution}>
                     <h4>La solution parfaite pour ceux qui...</h4>
