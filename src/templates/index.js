@@ -117,6 +117,7 @@ export const pageQuery = graphql`
         ) {
             edges {
                 node {
+                    id
                     frontmatter {
                         slug
                         date
