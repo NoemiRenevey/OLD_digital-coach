@@ -13,6 +13,7 @@ import { colors } from '../styles/constants'
 import ProductPitch from '../components/sections/ProductPitch'
 import EventsFeed from '../components/sections/EventsFeed'
 import BenefitsPitch from '../components/sections/BenefitsPitch'
+import FunnelOverview from '../components/sections/FunnelOverview'
 
 /**
 * Main index page (home page)
@@ -48,6 +49,8 @@ const Index = ({ data, location, pageContext }) => {
                             ))}
                         </div>
                     </section>
+
+                    <FunnelOverview />
 
                     <EventsFeed events={events} />
                 </div>
