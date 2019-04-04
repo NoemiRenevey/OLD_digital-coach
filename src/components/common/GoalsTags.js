@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+const _ = require(`lodash`)
 
 import { FaCheck } from "react-icons/fa"
 
@@ -11,10 +12,13 @@ const GoalsTags = ({ goals }) => {
 
     return (
         <div css={cardGoals}>
-            {goals.map((goal, i) => [
-                // i > 0 && `, `,
-                <Link to={`/objectif/${_.kebabCase(goal.id)}/`} key={i}><FaCheck /> {goal.name}</Link>
-            ])}
+            {goals.map((goal, i) => {
+                const goalLink = `/objectif/${_.kebabCase(goal.id)}/`
+
+                return (
+                    <Link to={goalLink} key={i}><FaCheck /> {goal.name}</Link>
+                )
+            })}
         </div>
     )
 }

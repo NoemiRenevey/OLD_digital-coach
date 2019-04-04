@@ -1,13 +1,22 @@
 - id: notoriete
   name: Se faire connaître
+  color_code: gradient1
+  buyer_exp: "Wow, je ne savais pas que cette entreprise existait."
+  seller_exp: "Je dois me faire connaître auprès de potentiels clients"
 - id: trafic
   name: Créer du traffic
+  color_code: gradient2
+  buyer_exp: "Wow, je ne savais pas que cette entreprise existait."
+  seller_exp: "Je dois me faire connaître auprès de potentiels clients"
 - id: consideration
   name: Convaincre le visiteur
+  buyer_exp: "Wow, je ne savais pas que cette entreprise existait."
+  seller_exp: "Je dois me faire connaître auprès de potentiels clients"
 - id: conversion
   name: Pousser à l'action
 - id: repeat
   name: Faire acheter à nouveau
+  seller_exp: "Je dois me faire connaître auprès de potentiels clients"
 - id: referral
   name: Générer du bouche à oreille
 - id: organisation
