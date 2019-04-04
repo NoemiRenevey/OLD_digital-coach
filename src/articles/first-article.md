@@ -9,6 +9,7 @@ complexity: 1
 goals: ["trafic", "notoriete"]
 category: "webmarketing"
 tools: ["facebook-ads", "mailchimp"]
+featured: 1
 ---
 
 # Level 1: Blablabla pour commencer l'article

@@ -5,7 +5,7 @@ import EventCard from '../common/EventCard'
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-const EventsFeed = ({events}) => {
+const EventsFeed = ({ events }) => {
     return (
         <section css={eventsSection}>
             <div css={eventsIntro}>

@@ -100,9 +100,14 @@ const popularIntro = css`
 
 export const pageQuery = graphql`
     query IndexQuery {
-        articles: allMarkdownRemark(filter: {
-            fileAbsolutePath: {regex : "\/articles/"}
-        }) {
+        articles: allMarkdownRemark(
+            filter: {
+                fileAbsolutePath: {regex: "/articles/"}, 
+                frontmatter: {featured: {lte: 3}, draft: {ne: true}}
+            },
+            sort: {fields: frontmatter___featured},
+            limit: 3
+        ) {
             edges {
                 node {
                     frontmatter {
