@@ -30,8 +30,9 @@ const cardGoals = css`
     left: 8px;
 
     a {
-        background-image: ${colors.gradient1}; 
+        background-image: ${colors.gradient2}; 
         color: white;
+        opacity: .98;
         padding: 4px 8px;
         border-radius: 5px;
         display: inline-block;
@@ -48,6 +49,7 @@ const cardGoals = css`
             // color: ${colors.accent};
             // transition: color .2s linear;
             background-position: right center;
+            opacity: 1;
         }
     }
 `
