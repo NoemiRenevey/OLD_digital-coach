@@ -39,7 +39,7 @@ const blurbs = [
 const BenefitsPitch = () => {
     return (
         <section css={benefitsSection}>
-            <h2>Préparez-vous au succès digital</h2>
+            <h2>L'activation digitale enfin à portée de clic</h2>
             <p className="big">Fini les recherches, les questionnements, les prises de tête. Vous allez enfin pouvoir obtenir des résultats en appliquant nos recommendations. Voilà quelques arguments pour vous en convaincre...</p>
             
             <div css={benefitsBlurbs}>
