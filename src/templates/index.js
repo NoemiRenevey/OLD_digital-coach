@@ -9,8 +9,10 @@ import { Layout, PostCard, Pagination } from '../components/common'
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { colors } from '../styles/constants'
+
 import ProductPitch from '../components/sections/ProductPitch'
-import EventsFeed from '../components/sections/EventsFeed';
+import EventsFeed from '../components/sections/EventsFeed'
+import BenefitsPitch from '../components/sections/BenefitsPitch'
 
 /**
 * Main index page (home page)
@@ -31,6 +33,8 @@ const Index = ({ data, location, pageContext }) => {
             <Layout isHome={true}>
                 <div className="container" css={homePage}>
                     <ProductPitch />
+
+                    <BenefitsPitch />
 
                     <section css={popularArticles}>
                         <div css={popularIntro}>
