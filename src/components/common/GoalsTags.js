@@ -12,7 +12,7 @@ const GoalsTags = ({ goals }) => {
     return (
         <div css={cardGoals}>
             {goals.map((goal, i) => [
-                i > 0 && `, `,
+                // i > 0 && `, `,
                 <Link to={`/objectif/${_.kebabCase(goal.id)}/`} key={i}><FaCheck /> {goal.name}</Link>
             ])}
         </div>
@@ -22,16 +22,20 @@ const GoalsTags = ({ goals }) => {
 export default GoalsTags
 
 const cardGoals = css`
-    margin: 20px 0 20px;
     font-size: 1.4rem;
     line-height: 1.15em;
     color: white;
+    position: absolute;
+    top: 13px;
+    left: 8px;
 
     a {
         background-color: ${colors.whitegrey}; 
         color: ${colors.midgrey};
         padding: 4px 8px;
         border-radius: 5px;
+        display: inline-block;
+        margin: 0 3px 3px 0;
 
         svg {
             margin-bottom: 2px;

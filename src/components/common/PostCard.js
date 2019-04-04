@@ -31,7 +31,11 @@ const PostCard = ({ post }) => {
                 {featuredImg &&
                     <div css={cardImage} style={{
                         backgroundImage: `url(${featuredImg.childImageSharp.fixed.src})` ,
-                    }}></div>
+                    }}>
+                        {goals &&
+                            <GoalsTags goals={goals} />
+                        }
+                    </div>
                 }
                 <div css={cardWrapper}>
                     {category &&
@@ -44,9 +48,6 @@ const PostCard = ({ post }) => {
             <div css={cardWrapper}>
                 <section css={cardExcerpt}>{excerpt}</section>
 
-                {goals &&
-                    <GoalsTags goals={goals} />
-                }
                 <footer css={cardFooter}>
                     {tools && 
                     <div css={cardFooterLeft}>
@@ -112,6 +113,7 @@ const cardHeader = css`
 `
 
 const cardImage = css`
+    position: relative;
     margin: 0;
     width: auto;
     height: 200px;
