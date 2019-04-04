@@ -20,11 +20,17 @@ const CategoryTag = ({category}) => {
 export default CategoryTag
 
 const cardCategory = css`
-    display: block;    
-    margin: 5px 0 2px;
+    display: block;
+    position: relative;
+    z-index: 4;
+    margin-top: -20px;
 
     a {
-        color: ${colors.midgrey};
+        color: ${colors.accent3};
+        background-color: white;
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 5px;
 
         :hover {
             text-decoration: none;
