@@ -29,7 +29,8 @@ export default EventsFeed
  */
 
 const eventsSection = css`
-    margin-top: 50px;
+    margin-top: 80px;
+    margin-bottom: 80px;
 `
 
 const eventsIntro = css`

@@ -37,7 +37,8 @@ export default ProductPitch
 const productPitch = css`
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 80px;
 `
 
 const leftProductPitch = css`
