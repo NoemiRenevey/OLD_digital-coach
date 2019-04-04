@@ -6,12 +6,11 @@ import { Layout, PostCard, Pagination } from '../components/common'
 // import { MetaData } from '../components/common/meta'
 // import { postFields } from '../utils/fragments'
 
-import EventCard from '../components/common/EventCard'
-
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { colors } from '../styles/constants'
 import ProductPitch from '../components/sections/ProductPitch'
+import EventsFeed from '../components/sections/EventsFeed';
 
 /**
 * Main index page (home page)
@@ -46,18 +45,7 @@ const Index = ({ data, location, pageContext }) => {
                         </div>
                     </section>
 
-                    <section css={eventsSection}>
-                        <div css={eventsIntro}>
-                            <h2>Rendez-Vous! Checkpoints Activation</h2>
-                            <p className="big">Besoin d'un coup de boost, de poser des questions, et de partager vos expériences d'activation digitale avec le reste de la communauté ? Rejoignez-nous lors des événements ou des Webinars/LIVE.</p>
-                        </div>
-                        <div css={eventsFeed}>
-                            {events.map(({ node }) => (
-                                // Include the markup for each event - components/common/EventCard.js
-                                <EventCard key={node.slug} event={node} />
-                            ))}
-                        </div>
-                    </section>
+                    <EventsFeed events={events} />
                 </div>
             </Layout>
         </Fragment>
@@ -102,22 +90,6 @@ const popularArticles = css`
 const popularIntro = css`
     text-align: center;
     margin-bottom: 50px;
-`
-
-// Events
-
-const eventsSection = css`
-    margin-top: 50px;
-`
-
-const eventsIntro = css`
-    text-align: left;
-`
-
-const eventsFeed = css`
-    display: flex;
-    justify-content: flex-start;
-    margin: 10px -20px;
 `
 
 /**
