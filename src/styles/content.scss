@@ -109,6 +109,7 @@ p.big {
 .stabilo {
     position: relative;
     z-index: 4;
+    // color: white;
 
     &:after {
         content: "";
@@ -120,7 +121,8 @@ p.big {
         height: 114%;
         overflow: visible;
         background-color: #fff2ac;
-        background-image: linear-gradient(to right, #ffe359 0%, #fff2ac 100%);
+        background-image: linear-gradient(to right, #fff700 0%, #fdf860 100%);
+        // background-image: linear-gradient(to right, #ff4208 0%, #dc037a 100%);
         transform: matrix(1.00,-0.03,-0.07,1.00,0,0);
     }
 }
