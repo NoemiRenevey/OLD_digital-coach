@@ -5,56 +5,63 @@ import { StaticQuery, graphql } from 'gatsby'
 import { jsx, css } from '@emotion/core'
 import { colors } from '../../styles/constants'
 
-const FunnelOverviewComp = ({ data }) => {
-    const objectives = data.allGoalsYaml.edges
-    const borderColor = (colorCode) => {
-        if (colorCode) {
-            // console.log("Color:", colors[colorCode])
-            // Put in div style={borderColor(objective.color_code)}
-            return { borderLeft: `4px solid ${colors[colorCode]}` }
-        } else {
-            return { borderLeft: `4px solid ${colors.accent}` }
-        }
+class FunnelOverviewComp extends React.Component {
+    constructor(props) {
+        super(props)
     }
 
-    return (
-        <section css={funnelSection}>
- 
-            <div css={funnelViz}>
-                {objectives.map(({ node: objective }, i) => {
-                    const borderStyle = borderColor(objective.color_code)
-                    const widthStyle = { width: `${100-i*5}%` }
-
-                    return (
-                        <div key={objective.id}>
-                            <div css={funnelStage} 
-                                style={{ 
-                                    ...widthStyle,
-                                    ...borderStyle,
-                                }} 
-                                className="slideInUp"
-                            >
-                                <h4><span className="stabilo">Objectif {i+1} :</span> {objective.name}</h4>
+    render() {
+        const { data } = this.props
+        const objectives = data.allGoalsYaml.edges
+        const borderColor = (colorCode) => {
+            if (colorCode) {
+                // console.log("Color:", colors[colorCode])
+                // Put in div style={borderColor(objective.color_code)}
+                return { borderLeft: `4px solid ${colors[colorCode]}` }
+            } else {
+                return { borderLeft: `4px solid ${colors.accent}` }
+            }
+        }
     
-                                {(objective.buyer_exp || objective.seller_exp) && 
-                                    <ul>
-                                        {objective.seller_exp && <li>{objective.seller_exp}</li>}
-                                        {objective.buyer_exp && <li>{objective.buyer_exp}</li>}
-                                    </ul>
-                                }
+        return (
+            <section css={funnelSection}>
+     
+                <div css={funnelViz}>
+                    {objectives.map(({ node: objective }, i) => {
+                        const borderStyle = borderColor(objective.color_code)
+                        const widthStyle = { width: `${100-i*5}%` }
+    
+                        return (
+                            <div key={objective.id}>
+                                <div css={funnelStage} 
+                                    style={{ 
+                                        ...widthStyle,
+                                        ...borderStyle,
+                                    }} 
+                                    className="slideInUp"
+                                >
+                                    <h4><span className="stabilo">Objectif {i+1} :</span> {objective.name}</h4>
+        
+                                    {(objective.buyer_exp || objective.seller_exp) && 
+                                        <ul>
+                                            {objective.seller_exp && <li>{objective.seller_exp}</li>}
+                                            {objective.buyer_exp && <li>{objective.buyer_exp}</li>}
+                                        </ul>
+                                    }
+                                </div>
                             </div>
-                        </div>
-                    )
-                })}
-            </div>
-
-            <div css={funnelDesc}>
-                <h2>Des Playbooks pour chacun de vos défis</h2>
-                <p className="big">Pour tous les défis digitaux que rencontre votre entreprise, nous avons rassemblé et continuons chaque jour d'apporter des solutions : de l'acquisition de clients jusqu'à l'automatisation des process dans votre PME, il existe un Playbook adapté !</p>
-            </div>
-
-        </section>
-    )
+                        )
+                    })}
+                </div>
+    
+                <div css={funnelDesc}>
+                    <h2>Des Playbooks pour chacun de vos défis</h2>
+                    <p className="big">Pour tous les défis digitaux que rencontre votre entreprise, nous avons rassemblé et continuons chaque jour d'apporter des solutions : de l'acquisition de clients jusqu'à l'automatisation des process dans votre PME, il existe un Playbook adapté !</p>
+                </div>
+    
+            </section>
+        )
+    }
 }
 
 const FunnelOverview = props => (
