@@ -28,7 +28,7 @@ const FunnelOverviewComp = ({ data }) => {
                 {objectives.map(({ node: objective }, i) => (
                     <div key={objective.id}>
                         <div css={funnelStage} style={{ width: `${100-i*5}%` }} className="slideInUp">
-                            <h4><span className="stabilo">Objectif :</span> {objective.name}</h4>
+                            <h4><span className="stabilo">Objectif {i+1} :</span> {objective.name}</h4>
 
                             {(objective.buyer_exp || objective.seller_exp) && 
                                 <ul>
@@ -107,7 +107,8 @@ const funnelStage = css`
     ul {
         margin-bottom: 0;
         list-style: none;
-        padding-left: 0;
+        padding: 0;
+        overflow: auto; // clearfix
 
         li {
             padding: 4px 20px;
@@ -125,6 +126,7 @@ const funnelStage = css`
             background-color: ${colors.whitegrey};
             border-bottom-right-radius: 5px;
             text-align: right;
+            float: right;
         }
     }
 `
