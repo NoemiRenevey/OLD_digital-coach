@@ -11,13 +11,9 @@ const FunnelOverviewComp = ({ data }) => {
         if (colorCode) {
             // console.log("Color:", colors[colorCode])
             // Put in div style={borderColor(objective.color_code)}
-            return { 
-                borderStyle: `solid`,
-                borderWidth: `4px`,
-                borderImage: `${colors[colorCode]} 1 100%`,
-            }
+            return { borderLeft: `4px solid ${colors[colorCode]}` }
         } else {
-            return { borderLeft: `4px solid #F4F4F4` }
+            return { borderLeft: `4px solid ${colors.accent}` }
         }
     }
 
@@ -25,20 +21,31 @@ const FunnelOverviewComp = ({ data }) => {
         <section css={funnelSection}>
  
             <div css={funnelViz}>
-                {objectives.map(({ node: objective }, i) => (
-                    <div key={objective.id}>
-                        <div css={funnelStage} style={{ width: `${100-i*5}%` }} className="slideInUp">
-                            <h4><span className="stabilo">Objectif {i+1} :</span> {objective.name}</h4>
+                {objectives.map(({ node: objective }, i) => {
+                    const borderStyle = borderColor(objective.color_code)
+                    const widthStyle = { width: `${100-i*5}%` }
 
-                            {(objective.buyer_exp || objective.seller_exp) && 
-                                <ul>
-                                    {objective.seller_exp && <li>{objective.seller_exp}</li>}
-                                    {objective.buyer_exp && <li>{objective.buyer_exp}</li>}
-                                </ul>
-                            }
+                    return (
+                        <div key={objective.id}>
+                            <div css={funnelStage} 
+                                style={{ 
+                                    ...widthStyle,
+                                    ...borderStyle,
+                                }} 
+                                className="slideInUp"
+                            >
+                                <h4><span className="stabilo">Objectif {i+1} :</span> {objective.name}</h4>
+    
+                                {(objective.buyer_exp || objective.seller_exp) && 
+                                    <ul>
+                                        {objective.seller_exp && <li>{objective.seller_exp}</li>}
+                                        {objective.buyer_exp && <li>{objective.buyer_exp}</li>}
+                                    </ul>
+                                }
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    )
+                })}
             </div>
 
             <div css={funnelDesc}>
@@ -98,7 +105,7 @@ const funnelStage = css`
     border-radius: 5px;
     border: 1px solid ${colors.whitegrey};
     margin-bottom: 20px;
-    padding: 20px 20px;
+    padding: 20px 20px 10px;
 
     h4 {
         margin-top: 0;

@@ -1,11 +1,11 @@
 - id: notoriete
   name: Se faire connaître
-  color_code: gradient1
+  color_code: accent2
   buyer_exp: "Wow, je ne savais pas que cette entreprise existait."
   seller_exp: "Je dois me faire connaître auprès de potentiels clients"
 - id: trafic
   name: Créer du traffic
-  color_code: gradient2
+  color_code: accent3
   buyer_exp: "Wow, je ne savais pas que cette entreprise existait."
   seller_exp: "Je dois me faire connaître auprès de potentiels clients"
 - id: consideration
