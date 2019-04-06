@@ -1,6 +1,9 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
+import { GoInfo } from "react-icons/go"
+import { MdKeyboardArrowUp } from "react-icons/md"
+
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { colors } from '../../styles/constants'
@@ -47,7 +50,7 @@ class FunnelOverviewComp extends React.Component {
                 <div css={funnelViz}>
                     {objectives.map(({ node: objective }, i) => {
                         const borderStyle = borderColor(objective.color_code)
-                        const widthStyle = { width: `${100-i*5}%` }
+                        const widthStyle = { width: `${100 - i * 5}%` }
     
                         return (
                             <div key={objective.id}>
@@ -59,12 +62,12 @@ class FunnelOverviewComp extends React.Component {
                                     className="slideInUp"
                                 >
                                     <h4><span className="stabilo">Objectif {i + 1} :</span> {objective.name}</h4>
-                                    <button onClick={event => this.handleClick(event, i + 1)}>
-                                        {this.state[`isToggled_${i+1}`] ? `ON` : `OFF`}
+                                    <button onClick={event => this.handleClick(event, i + 1)} css={expandBtn}>
+                                        {this.state[`isToggled_${i + 1}`] ? <MdKeyboardArrowUp /> : <GoInfo/>}
                                     </button>
 
                                     {(objective.buyer_exp || objective.seller_exp) && 
-                                        <ul>
+                                        <ul css={this.state[`isToggled_${i + 1}`] ? showExp : hideExp }>
                                             {objective.seller_exp && <li>{objective.seller_exp}</li>}
                                             {objective.buyer_exp && <li>{objective.buyer_exp}</li>}
                                         </ul>
@@ -129,6 +132,7 @@ const funnelViz = css`
 `
 
 const funnelStage = css`
+    position: relative;
     background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0f0f0' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     border-radius: 5px;
     border: 1px solid ${colors.whitegrey};
@@ -164,4 +168,25 @@ const funnelStage = css`
             float: right;
         }
     }
+`
+
+const expandBtn = css`
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    background-color: transparent;
+
+    svg {
+        fill: ${colors.lightgrey};
+    }
+`
+
+const showExp = css`
+    display: block;
+    transition: display 100ms ease-in-out;
+`
+
+const hideExp = css`
+    display: none;
+    transition: display 100ms ease-in-out;
 `
