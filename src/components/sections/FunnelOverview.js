@@ -181,12 +181,15 @@ const expandBtn = css`
     }
 `
 
-const showExp = css`
-    display: block;
-    transition: display 100ms ease-in-out;
+const hideExp = css`
+    opacity: 0; 
+    height: 0;
+    overflow: hidden;
+    transition: opacity 1s ease-out;
 `
 
-const hideExp = css`
-    display: none;
-    transition: display 100ms ease-in-out;
+const showExp = css`
+    opacity: 1;
+    height: auto;
+    transition: opacity 1.5s ease-in-out;
 `
