@@ -8,6 +8,24 @@ import { colors } from '../../styles/constants'
 class FunnelOverviewComp extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            isToggled_1: false,
+            isToggled_2: false,
+            isToggled_3: false,
+            isToggled_4: false,
+            isToggled_5: false,
+            isToggled_6: false,
+            isToggled_7: false,
+            isToggled_8: false,
+        }
+
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(event, index) {
+        this.setState(state => ({
+            [`isToggled_${index}`]: !state[`isToggled_${index}`],
+        }))
     }
 
     render() {
@@ -40,8 +58,11 @@ class FunnelOverviewComp extends React.Component {
                                     }} 
                                     className="slideInUp"
                                 >
-                                    <h4><span className="stabilo">Objectif {i+1} :</span> {objective.name}</h4>
-        
+                                    <h4><span className="stabilo">Objectif {i + 1} :</span> {objective.name}</h4>
+                                    <button onClick={event => this.handleClick(event, i + 1)}>
+                                        {this.state[`isToggled_${i+1}`] ? `ON` : `OFF`}
+                                    </button>
+
                                     {(objective.buyer_exp || objective.seller_exp) && 
                                         <ul>
                                             {objective.seller_exp && <li>{objective.seller_exp}</li>}
@@ -130,13 +151,13 @@ const funnelStage = css`
             display: inline-block;
         }
 
-        li:first-child {
+        li:first-of-type {
             background-color: ${colors.accent3};
             color: white;
             border-bottom-left-radius: 5px;
         }
 
-        li:nth-child(2) {
+        li:nth-of-type(2) {
             background-color: ${colors.whitegrey};
             border-bottom-right-radius: 5px;
             text-align: right;
