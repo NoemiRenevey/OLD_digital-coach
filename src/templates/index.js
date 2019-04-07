@@ -39,7 +39,7 @@ const Index = ({ data, location, pageContext }) => {
 
                     <section css={popularArticles}>
                         <div css={popularIntro}>
-                            <h2>Quelques recettes populaires</h2>
+                            <h2>Quelques <span className="stabilo">checklists</span> populaires</h2>
                             <p className="big">Suivez nos guides : il suffit d'appliquer nos recettes point par point, afin d'obtenir le résultat souhaité. Une sélection de recettes les plus appréciées ci-dessous.</p>
                         </div>
                         <div className="post-feed">                        
