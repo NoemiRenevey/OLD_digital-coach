@@ -19,6 +19,7 @@ exports.createPages = ({ graphql, actions }) => {
         const indexTemplate = path.resolve(`./src/templates/index.js`)
         const goalTemplate = path.resolve(`./src/templates/goal.js`)
         const categoryTemplate = path.resolve(`./src/templates/category.js`)
+
         resolve(
             graphql(`
               query allArticles {
@@ -139,6 +140,51 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     /**
+     * Tools
+     */
+    const createTools = new Promise((resolve, reject) => {
+        const toolTemplate = path.resolve(`./src/templates/tool.js`) 
+
+        resolve(
+            graphql(`
+                query allToolsQuery {
+                    allToolsYaml {
+                        edges {
+                            node {
+                                id
+                            }
+                        }
+                    }
+                }
+            `).then((result) => {
+                if (result.errors) {
+                    return reject(result.errors)
+                }
+
+                if (!result.data.allToolsYaml) {
+                    return resolve()
+                }
+
+                const tools = result.data.allToolsYaml.edges
+                console.log(`Building each Tool page`)
+
+                _.forEach(tools, ({ node }) => {
+                    node.url = `/outils-digitaux/${node.id}/`
+
+                    createPage({
+                        path: node.url,
+                        component: path.resolve(toolTemplate),
+                        context: {
+                            // Data passed to context is available
+                            // in page queries as GraphQL variables.
+                            id: node.id,
+                        },
+                    })
+                })
+            })   
+        )
+    })
+    /**
     * Authors
     */
     const createAuthors = new Promise((resolve, reject) => {
@@ -213,5 +259,5 @@ exports.createPages = ({ graphql, actions }) => {
         )
     })
 
-    return Promise.all([createPosts, createAuthors])
+    return Promise.all([createPosts, createAuthors, createTools])
 }
