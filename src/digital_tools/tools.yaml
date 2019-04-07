@@ -7,7 +7,7 @@
   complementary: []
   alternatives: []
   country: Switzerland
-  languages: []
+  languages: [FR, EN]
 - id: mailchimp
   name: Mailchimp
   price: Freemium
