@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 
 import { Layout, PostCard, Pagination } from '../components/common'
 import { MetaData } from '../components/common/meta'
+import ChatMessages from '../components/common/ChatMessages'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -33,7 +34,18 @@ const Goal = ({ data, location, pageContext }) => {
                         </div>
 
                         <div css={headerRight}>
-                            Yo
+                            <ChatMessages 
+                                chatMessages={[
+                                    {
+                                        id: `buyer`,
+                                        message: goal.buyer_exp,
+                                    },
+                                    {
+                                        id: `seller`,
+                                        message: goal.seller_exp,
+                                    },
+                                ]} 
+                            />
                         </div>
                     </header>
                     
@@ -86,15 +98,17 @@ const goalPageHeader = css`
 `
 
 const headerLeft = css`
-    width: 60%;
+    width: 50%;
     margin: 0;
     padding: 0;
 `
 
 const headerRight = css`
-    width 30%;
+    width 47%;
     margin: 0;
+    margin-top: 60px;
     padding: 0;
+    // align-self: center;
 `
 
 export const pageQuery = graphql`
