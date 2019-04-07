@@ -1,6 +1,8 @@
 - id: notoriete
   name: Se faire connaître
   # color_code: accent2
+  challenge_desc: "Augmenter votre notoriété est souvent l'objectif prioritaire pour les entreprises: vous voulez plus de clients, et celà passe par vous faire connaître... car si personne ne sait que vous existez, même si vous avez les meilleurs produits ou services du monde, il ne se passera pas grand chose."
+  solution_desc: "Les guides ci-dessous vont tous vous aider à développer votre notoriété auprès de vos potentiels acheteurs, afin de mieux vous faire connaître grâce au digital."
   seller_exp: "Je dois me faire connaître auprès de potentiels clients"
   buyer_exp: "Wow, je ne savais pas que cette entreprise existait."
 - id: trafic

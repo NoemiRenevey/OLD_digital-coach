@@ -23,7 +23,9 @@ const Goal = ({ data, location, pageContext }) => {
                 <div className="container">
                     <header className="tag-header">
                         <h1>{goal.name}</h1>
+                        <p>{goal.challenge_desc}</p>
                     </header>
+                    <p>{goal.solution_desc}</p>
                     <section className="post-feed">
                         {posts.map(({ node }) => {
                             // The tag below includes the markup for each post - components/common/PostCard.js
@@ -69,6 +71,10 @@ query goalQuery($goal: String) {
           node {
             id
             name
+            challenge_desc
+            solution_desc
+            seller_exp
+            buyer_exp
           }
         }
     }
