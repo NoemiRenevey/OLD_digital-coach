@@ -95,14 +95,15 @@ class FunnelOverviewComp extends React.Component {
                                             <ChatMessages 
                                                 chatMessages={[
                                                     {
-                                                        id: `buyer`,
-                                                        message: objective.buyer_exp,
-                                                    },
-                                                    {
                                                         id: `seller`,
                                                         message: objective.seller_exp,
                                                     },
+                                                    {
+                                                        id: `buyer`,
+                                                        message: objective.buyer_exp,
+                                                    },
                                                 ]} 
+                                                inBox={false}
                                             />
                                         </div>
                                     }

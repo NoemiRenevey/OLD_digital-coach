@@ -37,14 +37,15 @@ const Goal = ({ data, location, pageContext }) => {
                             <ChatMessages 
                                 chatMessages={[
                                     {
-                                        id: `buyer`,
-                                        message: goal.buyer_exp,
-                                    },
-                                    {
                                         id: `seller`,
                                         message: goal.seller_exp,
                                     },
+                                    {
+                                        id: `buyer`,
+                                        message: goal.buyer_exp,
+                                    },
                                 ]} 
+                                inBox={true}
                             />
                         </div>
                     </header>
