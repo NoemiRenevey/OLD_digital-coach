@@ -15,6 +15,7 @@ import { colors } from '../styles/constants'
 const Tool = ({ data, location, pageContext }) => {
     const tool = data.singleTool.edges["0"].node
     const posts = data.posts.edges
+    const toolLogo = tool.logo !== null ? tool.logo.childImageSharp.fixed.src : `https://via.placeholder.com/150`
     // console.log(`Page context:`, pageContext)
     // console.log(`Tool:`, tool)
 
@@ -27,9 +28,15 @@ const Tool = ({ data, location, pageContext }) => {
             />
             <Layout>
                 <div className="container">
-                    <header className="tag-header">
-                        <h1>{tool.name}</h1>
-                        <p className="content-intro">{tool.desc}</p>
+                    <header css={toolHeader}>
+                        <div css={toolDesc}>                        
+                            <h1>{tool.name}</h1>
+                            <p className="content-intro">{tool.desc}</p>
+                        </div>
+
+                        <div css={toolImg}>
+                            {toolLogo && <img src={toolLogo} alt={tool.name} />}
+                        </div>
                     </header>
 
                     <section className="post-feed">
@@ -70,6 +77,27 @@ const Tool = ({ data, location, pageContext }) => {
 
 export default Tool
 
+/**
+ * CSS
+ */
+
+const toolHeader = css`
+    display: flex;
+    justify-content: space-between;
+`
+
+const toolDesc = css`
+    width: 50%;
+`
+
+const toolImg = css`
+    width: 30%;
+    text-align: right;
+    height: 120px;
+    width: 120px;
+    border-radius: 100%;
+`
+
 export const pageQuery = graphql`
 query toolQuery($id: String) {
     singleTool: allToolsYaml(filter: {id: {eq: $id}}) {
@@ -78,6 +106,13 @@ query toolQuery($id: String) {
             id
             name
             desc
+            logo {
+                childImageSharp {
+                    fixed(width: 200) {
+                      src
+                    }
+                  }
+            }
           }
         }
     }
