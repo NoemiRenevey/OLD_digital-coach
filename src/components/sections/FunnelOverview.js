@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 const _ = require(`lodash`)
 
 import { GoInfo } from "react-icons/go"
@@ -85,7 +85,7 @@ class FunnelOverviewComp extends React.Component {
                                     }} 
                                     className="slideInUp"
                                 >
-                                    <h4><span className="stabilo">Objectif {i + 1} :</span> {objective.name}</h4>
+                                    <h4><Link to={`/objectif/${objective.id}`}><span className="stabilo">Objectif {i + 1} :</span> {objective.name}</Link></h4>
                                     <button onClick={event => this.handleClick(event, i + 1)} css={expandBtn}>
                                         {this.state.individualToggles[`isToggled_${i + 1}`] ? <MdKeyboardArrowUp /> : <GoInfo/>}
                                     </button>
@@ -191,6 +191,11 @@ const funnelStage = css`
 
     h4 {
         margin-top: 0;
+
+        a {
+            text-decoration: none;
+            color: ${colors.black};
+        }
     }
 
     button:focus {

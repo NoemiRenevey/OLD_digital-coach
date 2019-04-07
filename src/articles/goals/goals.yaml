@@ -1,4 +1,5 @@
 - id: notoriete
+  short_name: notoriété
   name: Se faire connaître
   # color_code: accent2
   challenge_desc: "Vous voulez plus de clients, la première étape est de vous faire connaître... car si personne ne sait que vous existez, et même si vous avez les meilleurs produits ou services du monde, il ne se passera pas grand chose."
@@ -6,27 +7,33 @@
   seller_exp: "Je dois me faire connaître auprès de potentiels clients"
   buyer_exp: "Wow, je ne savais pas que cette entreprise existait."
 - id: trafic
+  short_name: trafic
   name: Créer du traffic
   # color_code: accent3
   seller_exp: "Mes potentiels clients doivent venir sur mes plateformes digitales !"
   buyer_exp: "Wow, ils ont de belles choses sur leur site internet et Instagram!"
 - id: consideration
+  short_name: considération
   name: Convaincre le visiteur
   seller_exp: "Je dois convaincre mes visiteurs que j'ai ce qu'ils cherchent."
   buyer_exp: "Wow, ils ont exactement ce dont j'ai besoin !"
 - id: conversion
+  short_name: conversion
   name: Pousser à l'action
   seller_exp: "Je dois déclencher le contact ou l'achat chez le visiteur"
   buyer_exp: "C'est parti, je suis décidé, j'achète !"
 - id: repeat
+  short_name: répétition
   name: Faire acheter à nouveau
   seller_exp: "Je veux que mes clients passés achètent à nouveau..."
   buyer_exp: "J'avais bien aimé, je vais tenter l'expérience à nouveau !"
 - id: referral
+  short_name: recommendations
   name: Générer du bouche à oreille
   seller_exp: "Je veux que mes clients recommandent mon entreprise à leur réseau"
   buyer_exp: "Cette entreprise est vraiment bien, tu devrais les contacter !"
 - id: organisation
+  short_name: digitalisation
   name: Digitaliser son entreprise
   seller_exp: "Je veux rendre mon entreprise plus moderne et efficace"
   buyer_exp: "Wow, tout se fait si simplement et rapidement avec cette entreprise !"

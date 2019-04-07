@@ -19,16 +19,17 @@ const Goal = ({ data, location, pageContext }) => {
 
     return (
         <Fragment>
-            <MetaData
+            {/*<MetaData
                 data={data}
                 location={location}
                 type="series"
-            />
+            />*/}
             <Layout>
                 <div className="container">
                     <header css={goalPageHeader}>
                         <div css={headerLeft}>
-                            <h1>{goal.name}</h1>
+                            <h1>Objectif <span className="stabilo">#{goal.short_name}</span></h1>
+                            <h2>{goal.name}</h2>
                             <p className="big">{goal.challenge_desc}</p>
                             <p className="accented">{goal.solution_desc}</p>
                         </div>
@@ -102,6 +103,10 @@ const headerLeft = css`
     width: 50%;
     margin: 0;
     padding: 0;
+
+    h2 {
+        margin-top: 10px;
+    }
 `
 
 const headerRight = css`
@@ -119,6 +124,7 @@ query goalQuery($goal: String) {
           node {
             id
             name
+            short_name
             challenge_desc
             solution_desc
             seller_exp
