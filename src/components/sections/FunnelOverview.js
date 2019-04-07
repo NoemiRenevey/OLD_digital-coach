@@ -4,6 +4,7 @@ const _ = require(`lodash`)
 
 import { GoInfo } from "react-icons/go"
 import { MdKeyboardArrowUp, MdUnfoldMore, MdUnfoldLess } from "react-icons/md"
+import ChatMessages from '../common/ChatMessages'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -90,10 +91,20 @@ class FunnelOverviewComp extends React.Component {
                                     </button>
 
                                     {(objective.buyer_exp || objective.seller_exp) && 
-                                        <ul css={this.state.individualToggles[`isToggled_${i + 1}`] ? showExp : hideExp }>
-                                            {objective.seller_exp && <li>{objective.seller_exp}</li>}
-                                            {objective.buyer_exp && <li>{objective.buyer_exp}</li>}
-                                        </ul>
+                                        <div css={this.state.individualToggles[`isToggled_${i + 1}`] ? showExp : hideExp }>
+                                            <ChatMessages 
+                                                chatMessages={[
+                                                    {
+                                                        id: `buyer`,
+                                                        message: objective.buyer_exp,
+                                                    },
+                                                    {
+                                                        id: `seller`,
+                                                        message: objective.seller_exp,
+                                                    },
+                                                ]} 
+                                            />
+                                        </div>
                                     }
                                 </div>
                             </div>
@@ -179,32 +190,6 @@ const funnelStage = css`
 
     h4 {
         margin-top: 0;
-    }
-
-    ul {
-        margin-bottom: 0;
-        list-style: none;
-        padding: 0;
-        overflow: auto; // clearfix
-
-        li {
-            padding: 4px 20px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        li:first-of-type {
-            background-color: ${colors.accent3};
-            color: white;
-            border-bottom-left-radius: 5px;
-        }
-
-        li:nth-of-type(2) {
-            background-color: ${colors.whitegrey};
-            border-bottom-right-radius: 5px;
-            text-align: right;
-            float: right;
-        }
     }
 
     button:focus {

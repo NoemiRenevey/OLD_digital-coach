@@ -5,6 +5,10 @@ import { graphql } from 'gatsby'
 import { Layout, PostCard, Pagination } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
+import { colors } from '../styles/constants'
+
 /**
 * Goal page (/objective/:slug)
 */
@@ -21,11 +25,18 @@ const Goal = ({ data, location, pageContext }) => {
             />
             <Layout>
                 <div className="container">
-                    <header className="tag-header">
-                        <h1>{goal.name}</h1>
-                        <p>{goal.challenge_desc}</p>
+                    <header css={goalPageHeader}>
+                        <div css={headerLeft}>
+                            <h1>{goal.name}</h1>
+                            <p className="big">{goal.challenge_desc}</p>
+                            <p className="accented">{goal.solution_desc}</p>
+                        </div>
+
+                        <div css={headerRight}>
+                            Yo
+                        </div>
                     </header>
-                    <p>{goal.solution_desc}</p>
+                    
                     <section className="post-feed">
                         {posts.map(({ node }) => {
                             // The tag below includes the markup for each post - components/common/PostCard.js
@@ -63,6 +74,28 @@ const Goal = ({ data, location, pageContext }) => {
 // }
 
 export default Goal
+
+/*
+ * CSS
+ */
+
+const goalPageHeader = css`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+`
+
+const headerLeft = css`
+    width: 60%;
+    margin: 0;
+    padding: 0;
+`
+
+const headerRight = css`
+    width 30%;
+    margin: 0;
+    padding: 0;
+`
 
 export const pageQuery = graphql`
 query goalQuery($goal: String) {
