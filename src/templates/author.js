@@ -32,17 +32,17 @@ const Author = ({ data, location, pageContext }) => {
             />
             <Layout>
                 <div className="container">
-                    <header className="author-header">
-                        <div className="author-header-content">
+                    <header>
+                        <div>
                             <h1>{author.author_id}</h1>
                             {author.bio && <p>{author.bio}</p>}
-                            <div className="author-header-meta">
+                            <div>
                                 {author.website && <a className="author-header-item" href={author.website} target="_blank" rel="noopener noreferrer">Website</a>}
                                 {twitterUrl && <a className="author-header-item" href={twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>}
                                 {facebookUrl && <a className="author-header-item" href={facebookUrl} target="_blank" rel="noopener noreferrer">Facebook</a>}
                             </div>
                         </div>
-                        <div className="author-header-image">
+                        <div>
                             {profileImage && <img src={profileImage} alt={author.author_id} />}
                         </div>
                     </header>
