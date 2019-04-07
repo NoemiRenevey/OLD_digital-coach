@@ -5,6 +5,10 @@ import { graphql } from 'gatsby'
 import { Layout, PostCard, Pagination } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
+import { colors } from '../styles/constants'
+
 /**
 * Author page (/author/:slug)
 *
@@ -32,17 +36,17 @@ const Author = ({ data, location, pageContext }) => {
             />
             <Layout>
                 <div className="container">
-                    <header>
-                        <div>
+                    <header css={authorHeader}>
+                        <div css={authorBio}>
                             <h1>{author.author_id}</h1>
                             {author.bio && <p>{author.bio}</p>}
                             <div>
-                                {author.website && <a className="author-header-item" href={author.website} target="_blank" rel="noopener noreferrer">Website</a>}
-                                {twitterUrl && <a className="author-header-item" href={twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>}
-                                {facebookUrl && <a className="author-header-item" href={facebookUrl} target="_blank" rel="noopener noreferrer">Facebook</a>}
+                                {author.website && <a href={author.website} target="_blank" rel="noopener noreferrer">Website</a>}
+                                {twitterUrl && <a href={twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>}
+                                {facebookUrl && <a href={facebookUrl} target="_blank" rel="noopener noreferrer">Facebook</a>}
                             </div>
                         </div>
-                        <div>
+                        <div css={authorAvatar}>
                             {profileImage && <img src={profileImage} alt={author.author_id} />}
                         </div>
                     </header>
@@ -86,6 +90,31 @@ const Author = ({ data, location, pageContext }) => {
 // }
 
 export default Author
+
+/**
+ * CSS
+ */
+
+const authorHeader = css`
+    display: flex;
+    justify-content: space-between;
+`
+
+const authorBio = css`
+    width: 50%;
+`
+
+const authorAvatar = css`
+    width: 30%;
+    text-align: right;  
+    
+    img {
+        height: 120px;
+        width: 120px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+`
 
 export const pageQuery = graphql`
 query authorArticlesQuery($slug: String!) {
