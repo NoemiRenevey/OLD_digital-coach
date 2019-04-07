@@ -164,6 +164,10 @@ const masterSwitch = css`
     svg {
         fill: ${colors.lightgrey};
     }
+
+    button:focus {
+        outline:0;
+    }
 `
 
 const funnelStage = css`
@@ -202,6 +206,10 @@ const funnelStage = css`
             text-align: right;
             float: right;
         }
+    }
+
+    button:focus {
+        outline:0;
     }
 `
 
