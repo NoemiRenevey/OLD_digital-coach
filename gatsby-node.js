@@ -6,7 +6,7 @@ const { paginate } = require(`gatsby-awesome-pagination`)
 
 /**
 * Here is the place where Gatsby creates the URLs for all the
-* posts, tags, pages and authors that we fetched from the Ghost site.
+* posts, tags, pages and authors...
 */
 exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions

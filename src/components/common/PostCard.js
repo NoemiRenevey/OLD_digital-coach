@@ -50,9 +50,9 @@ const PostCard = ({ post }) => {
 
                 <footer css={cardFooter}>
                     {tools && 
-                    <div css={cardFooterLeft}>
-                        <ToolsList tools={tools} />
-                    </div>
+                        <div css={cardFooterLeft}>
+                            <ToolsList tools={tools} />
+                        </div>
                     }
                     <div css={cardFooterRight}>
                         <div><MdTimelapse /> {post.timeToRead} min</div>

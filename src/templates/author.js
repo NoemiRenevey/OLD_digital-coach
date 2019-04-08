@@ -3,7 +3,6 @@ import React, { Fragment } from 'react'
 import { graphql } from 'gatsby'
 
 import { Layout, PostCard, Pagination } from '../components/common'
-import { MetaData } from '../components/common/meta'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -29,11 +28,6 @@ const Author = ({ data, location, pageContext }) => {
 
     return (
         <Fragment>
-            <MetaData
-                data={data}
-                location={location}
-                type="profile"
-            />
             <Layout>
                 <div className="container">
                     <header css={authorHeader}>

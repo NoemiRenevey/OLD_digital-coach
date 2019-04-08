@@ -34,8 +34,6 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.9",
-    "@tryghost/helpers": "1.0.1",
-    "@tryghost/helpers-gatsby": "1.0.1",
     "cheerio": "^1.0.0-rc.2",
     "gatsby": "2.1.18",
     "gatsby-awesome-pagination": "0.3.3",
@@ -54,7 +52,6 @@
     "gatsby-remark-reading-time": "^1.0.1",
     "gatsby-remark-responsive-iframe": "^2.1.1",
     "gatsby-source-filesystem": "2.0.23",
-    "gatsby-source-ghost": "3.3.0",
     "gatsby-transformer-remark": "^2.3.3",
     "gatsby-transformer-sharp": "2.1.14",
     "gatsby-transformer-yaml": "^2.1.10",

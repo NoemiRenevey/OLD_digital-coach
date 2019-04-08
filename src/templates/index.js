@@ -3,8 +3,6 @@ import React, { Fragment } from 'react'
 import { graphql } from 'gatsby'
 
 import { Layout, PostCard, Pagination } from '../components/common'
-// import { MetaData } from '../components/common/meta'
-// import { postFields } from '../utils/fragments'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -30,7 +28,6 @@ const Index = ({ data, location, pageContext }) => {
 
     return (
         <Fragment>
-            {/*<MetaData location={location} />*/}
             <Layout isHome={true}>
                 <div className="container" css={homePage}>
                     <ProductPitch />

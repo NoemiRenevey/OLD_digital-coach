@@ -7,7 +7,6 @@ import { MdTimelapse } from "react-icons/md"
 import { FaGrinBeamSweat } from "react-icons/fa";
 
 import { Layout } from '../components/common'
-// import { MetaData } from '../components/common/meta'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -42,11 +41,6 @@ const Post = ({ data, location }) => {
 
     return (
         <Fragment>
-            {/*<MetaData
-                data={data}
-                location={location}
-                type="article"
-            />*/}
             <Layout>
                 <div className="container">
                     <article className="content">
@@ -64,7 +58,9 @@ const Post = ({ data, location }) => {
 
                             <div css={contentBoilerplate}>
                                 <div css={boilerplateLeft}>
-                                    <ToolsList tools={tools} />
+                                    {tools &&
+                                        <ToolsList tools={tools} />
+                                    }
                                 </div>
                                 <div css={boilerplateRight}>
                                     <div><MdTimelapse /> {readingTime} min</div>

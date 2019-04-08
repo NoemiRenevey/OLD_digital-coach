@@ -3,7 +3,6 @@ import React, { Fragment } from 'react'
 import { graphql } from 'gatsby'
 
 import { Layout, PostCard, Pagination } from '../components/common'
-import { MetaData } from '../components/common/meta'
 import ChatMessages from '../components/common/ChatMessages'
 
 /** @jsx jsx */
@@ -19,11 +18,6 @@ const Goal = ({ data, location, pageContext }) => {
 
     return (
         <Fragment>
-            {/*<MetaData
-                data={data}
-                location={location}
-                type="series"
-            />*/}
             <Layout>
                 <div className="container">
                     <header css={goalPageHeader}>

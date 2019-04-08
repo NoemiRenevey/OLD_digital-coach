@@ -5,7 +5,6 @@ import { graphql } from 'gatsby'
 import { MdOpenInNew, MdLanguage, MdFlag, MdMonetizationOn } from "react-icons/md"
 
 import { Layout, PostCard, Pagination } from '../components/common'
-import { MetaData } from '../components/common/meta'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -23,11 +22,6 @@ const Tool = ({ data, location, pageContext }) => {
 
     return (
         <Fragment>
-            {/*<MetaData
-                data={data}
-                location={location}
-                type="series"
-            />*/}
             <Layout>
                 <div className="container">
                     <header css={toolHeader}>
