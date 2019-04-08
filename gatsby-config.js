@@ -67,6 +67,15 @@ module.exports = {
                 name: `articles`,
             },
         },
+        // Setup for markdown "Questions"
+        // See https://www.gatsbyjs.org/docs/adding-markdown-pages/
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: path.join(__dirname, `src`, `questions`),
+                name: `questions`,
+            },
+        },
         // Setup for authors
         // See https://www.gatsbyjs.org/docs/gatsby-config/#mapping-node-types
         {
@@ -269,6 +278,7 @@ module.exports = {
         'MarkdownRemark.frontmatter.author': `MarkdownRemark.frontmatter.author_id`,
         'MarkdownRemark.frontmatter.category': `CategoriesYaml`,
         'MarkdownRemark.frontmatter.tools': `ToolsYaml`,
+        'MarkdownRemark.frontmatter.tool': `ToolsYaml`,
         'MarkdownRemark.frontmatter.goals': `GoalsYaml`,
     },
 }

@@ -55,10 +55,12 @@ const Post = ({ data, location }) => {
                                 <img src={ featuredImage.childImageSharp.fixed.src } alt={ title } />
                             </figure> : null }
                         <section css={postFullContent}>
-                            {category && <CategoryTag category={category} />}
-                            <h1 className="content-title">{title}</h1>
-                            {goals && <GoalsTags goals={goals} />}
-                            <p className="content-intro">{desc}</p>
+                            <header>
+                                {category && <CategoryTag category={category} />}
+                                <h1 className="content-title">{title}</h1>
+                                {goals && <GoalsTags goals={goals} />}
+                                <p className="content-intro">{desc}</p>
+                            </header>
 
                             <div css={contentBoilerplate}>
                                 <div css={boilerplateLeft}>

@@ -23,11 +23,11 @@ const Tool = ({ data, location, pageContext }) => {
 
     return (
         <Fragment>
-            <MetaData
+            {/*<MetaData
                 data={data}
                 location={location}
                 type="series"
-            />
+            />*/}
             <Layout>
                 <div className="container">
                     <header css={toolHeader}>

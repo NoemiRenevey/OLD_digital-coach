@@ -44,7 +44,8 @@ exports.createPages = ({ graphql, actions }) => {
                       }
                     }
                   }
-              }`
+              }
+            `
             ).then((result) => {
                 if (result.errors) {
                     return reject(result.errors)
@@ -184,6 +185,52 @@ exports.createPages = ({ graphql, actions }) => {
             })   
         )
     })
+ 
+    /**
+     * Questions
+     */
+    const createQuestions = new Promise((resolve, reject) => {
+        const questionTemplate = path.resolve(`./src/templates/question.js`) 
+
+        resolve(
+            graphql(`
+                query questionsQuery {
+                    questions: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/questions/"}}) {
+                        edges {
+                            node {
+                                frontmatter {
+                                    slug
+                                }
+                            }
+                        }
+                    }
+                }
+            `).then((result) => {
+                if (result.errors) {
+                    return reject(result.errors)
+                }
+
+                if (!result.data.questions) {
+                    return resolve()
+                }
+
+                const questions = result.data.questions.edges
+
+                _.forEach(questions, ({ node }) => {
+                    createPage({
+                        path: `/questions/${node.frontmatter.slug}/`,
+                        component: path.resolve(questionTemplate),
+                        context: {
+                            // Data passed to context is available
+                            // in page queries as GraphQL variables.
+                            slug: node.frontmatter.slug,
+                        },
+                    })
+                })
+            })   
+        )
+    })
+
     /**
     * Authors
     */
@@ -259,5 +306,5 @@ exports.createPages = ({ graphql, actions }) => {
         )
     })
 
-    return Promise.all([createPosts, createAuthors, createTools])
+    return Promise.all([createPosts, createAuthors, createTools, createQuestions])
 }
