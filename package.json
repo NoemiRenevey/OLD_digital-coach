@@ -1,23 +1,22 @@
 {
-  "name": "gatsby-starter-ghost",
-  "description": "A starter template to build lightning fast websites with Ghost and Gatsby",
+  "name": "digital-activation",
+  "description": "digital activation framework built",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "Ghost Foundation",
-  "homepage": "https://docs.ghost.org/api/gatsby/",
+  "author": "Lyketil",
+  "homepage": "https://lyketil.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tryghost/gatsby-starter-ghost.git"
+    "url": "https://github.com/BrunoBoehm/digital-coach"
   },
   "engines": {
     "node": ">= 8.9.0"
   },
   "bugs": {
-    "url": "https://github.com/tryghost/gatsby-starter-ghost/issues"
+    "url": "https://github.com/BrunoBoehm/digital-coach/issues"
   },
   "keywords": [
-    "gatsby",
-    "ghost"
+    "gatsby"
   ],
   "main": "n/a",
   "scripts": {
@@ -29,7 +28,6 @@
   },
   "devDependencies": {
     "eslint": "5.14.1",
-    "eslint-plugin-ghost": "0.1.0",
     "eslint-plugin-react": "7.12.4"
   },
   "dependencies": {
