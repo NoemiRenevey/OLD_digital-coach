@@ -1,16 +1,100 @@
-- id: facebook-ads
+  - id: autopilot
+  name: Autopilot
+  price: Freemium
+  url: "https://autopilothq.com"
+  desc: Permet d'automatiser de façon dynamique l'envoi de contenu marketing adapté à chaque segment de sa base de données
+  logo: "./img/Autopilot.png"
+  - id: facebook
+  name: Facebook
+  price: Gratuit
+  url: "https://facebook.com"
+  desc: Plateforme qui permet de diffuser du contenu multimédia pour atteindre de nouvelles audiences, vendre en ligne et créer de la loyauté autour de votre marque auprès de ceux qui vous suivent
+  logo: "./img/Facebook.png"
+  - id: facebook-ads
   name: Facebook Ads
+  price: Gratuit
   url: "https://facebook.com/ads"
-  desc: Great tool for targeting users from Facebook and Instagram
+  desc: La plateforme professionnelle de Facebook qui permet de faire de la publicité ultra-segmentée sur Facebook et Instagram
   logo: "./img/FacebookAds.png"
-  price: Free
   complementary: []
   alternatives: []
-  country: Switzerland
+  country: Suisse
   languages: [FR, EN]
-- id: mailchimp
+  - id: google
+  name: Google
+  price: Gratuit
+  url: "https://www.google.com/"
+  desc: Le plus grand moteur de recherche sur lequel vous pouvez être trouvé de différentes manières
+  logo: "./img/Google.png"
+    - id: google-ads
+  name: Google Ads
+  price: Gratuit
+  url: "https://ads.google.com"
+  desc: Plateforme qui vous permet de diffuser des pubs sur le moteur de recherche Google et/ou les sites connexes à votre activité qui y sont référencés
+  logo: "./img/GoogleAds.png"
+   - id: google-analytics
+  name: Google Analytics
+  price: Gratuit
+  url: "https://analytics.google.com"
+  desc: Permet d'analyser le traffic de votre site et d'apporter des réponses chiffrées et objectives à des questions comme "d'où vient mon trafic ?" ou "que font les gens sur mon site ?"
+  logo: "./img/GoogleAnalytics.png"
+  - id: google-tag-manager
+  name: Google Tag Manager
+  price: Gratuit
+  url: "https://tagmanager.google.com"
+  desc: Outil permettant de centraliser les divers codes de tracking qui permettent de mesurer les interactions de vos visiteurs avec votre site
+  logo: "./img/GoogleTagManager.png"
+  - id: hotjar
+  name: Hotjar
+  price: Freemium
+  url: "https://www.hotjar.com"
+  desc: Enregistre visuellement les sessions de vos visiteurs pour voir l'utilisation qui est faite de votre site et repérer d'éventuels problèmes techniques
+  logo: "./img/Hotjar.png"
+  - id: instagram
+  name: Instagram
+  price: Gratuit
+  url: "https://www.instagram.com"
+  desc: Plateforme très populaire de contenu visuel engageant permettant d'atteindre de nouvelles audiences, de vendre en ligne et de créer de la loyauté autour de votre marque auprès de ceux qui vous suivent
+  logo: "./img/Instagram.png"
+  - id: linkedin
+  name: Linkedin
+  price: Gratuit
+  url: "https://www.linkedin.com"
+  desc: Plateforme de réseautage professionnel en ligne, la vitrine "corporate" de votre entreprise. Idéale pour les relations B2B. 
+  logo: "./img/Linkedin.png"
+  - id: linkedin-ads
+  name: Linkedin Ads
+  price: Gratuit
+  url: "https://www.linkedin.com/ad-beta/"
+  desc: Plateforme de publicité vous permettant de diffuser des pubs sur Linkedin ou d'envoyer des messages sponsorisés directement aux membres de votre réseau
+  logo: "./img/LinkedinAds.png"
+  - id: mailchimp
   name: Mailchimp
   price: Freemium
   url: "https://www.mailchimp.com"
-  desc: Great tool for emailing
+  desc: Outil simple d'emailing permettant de créer et d'envoyer à de larges bases de données vos emails marketing (newsletters) avec un suivi analytique de ces envois
   logo: "./img/Mailchimp.png"
+  - id: pipedrive
+  name: Pipedrive
+  price: 12.50 USD à 50USD par mois
+  url: "https://www.pipedrive.com"
+  desc: Outil de vente centralisant en une base de donnée dynamique tous vos contacts (CRM) vous donnant une vue d'ensemble claire de votre processus de vente 
+  logo: "./img/Pipedrive.png"
+  - id: snapchat
+  name: Snapchat
+  price: Gratuit
+  url: "https://www.snapchat.com"
+  desc: Plateforme de divertissement utilisée par les plus jeunes permettant d'échanger du contenu éphémère et consommer des contenus multimédias (émissions, pubs etc.)
+  logo: "./img/Snapchat.png"
+  - id: twitter
+  name: Twitter
+  price: Gratuit
+  url: "https://www.twitter.com"
+  desc: Plateforme semi-professionnelle très utilisée dans le journalisme permettant de suivre en temps réel et dans un format court des débats, actualités et autres situations "live"
+  logo: "./img/Twitter.png"
+  - id: youtube
+  name: Youtube
+  price: Gratuit
+  url: "https://www.youtube.com"
+  desc: Second moteur de recherche après Google, plateforme de contenu exclusivement vidéo, idéale pour des contenus didactiques ou des formats plus longs. Sert à atteindre de nouvelles audiences et à créer une loyauté autour de votre marque
+  logo: "./img/Youtube.png"
