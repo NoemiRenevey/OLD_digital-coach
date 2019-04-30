@@ -1,0 +1,29 @@
+---
+slug: ‘qu'est-ce-que-le-seo’
+date: 30/04/2019
+title: Qu'est-ce que le SEO ? 
+tldr: SEO = Search Engine Optimization, désigne les techniques pour être mieux référencés sur les moteurs de recherche web
+tools: [Wordpress]
+goals: [“trafic”, “notoriete”]
+category: “webmarketing”
+---
+#Qu'est-ce que le SEO ? 
+
+SEO = Search Engine Optimization, Optimisation des Moteurs de Recherche. "Faire du SEO" désigne la stratégie et l'ensemble de tactiques mises en place sur votre site pour que celui-ci apparaisse le plus haut possible sur les moteurs de recherche (Google, Yahoo etc.) sur un ensemble de mots-clés définis. 
+Une bonne position sur ces moteurs de recherche, sur des requêtes spécifiques, vous rapporte plus de traffic, donc de potentiels clients.
+
+## Comment marche le SEO ? 
+Pour pouvoir nous dire où se trouve le contenu qu'on y cherche, Google doit d'abord le savoir : pour trouver l'information dans quelques centaines de millions de pages web, les moteurs de recherches (Google, Yahoo...) utilisent des logiciels puissants, appelés "robots" ou "spiders", qui enregistrent le contenu de ces pages pour les indexer en listes de mot-clés dans un serveur. 
+L'avantage du SEO est que c'est une stratégie "organique", c'est-à-dire gratuite, à l'inverse des publicités en ligne. Par contre, c'est un travail constant et de longue-haleine, qui est nécessaire mais qui ne porte pas ses fruits tout de suite. Si vous voulez rapidement booster votre rang sur google, privilégiez les pubs (en parallèle de vos efforts SEO).
+
+##Les 3 piliers du SEO en bref
+Une bonne stratégie SEO comprend 3 piliers, sur lesquels travailler en parallèle: 
+1. Le pilier technique : votre site internet en tant qu'outil doit être optimisé pour le SEO : rapidité, lisibilité des images, utilisation des titres...vous aurez sans doute besoin d'un développeur ou d'une personne technique à disposition pour mettre en place cette étape.
+2. Le pilier contenu : le plus gros travail est celui du contenu, donc des textes qui apparaissent sur votre site. Avant de pouvoir rédiger du contenu, il va falloir déterminer sur quels mots-clés vous souhaitez apparaître.
+3. Le "netlinking" : les robots passent d'une page à l'autre par les liens qui y sont faits, en commençant généralement par les pages les plus populaires. Avec une bonne stratégie de netlinking (ou backlinking), vous identifiez ces sites populaires dans votre domaine et essayez d'obtenir de leur part un lien sur une de leurs pages redirigeant vers votre site. Vous produisez par ailleurs des liens sur votre site entre vos pages, et vers des pages populaires ("d'autorité") extérieures. 
+
+Tous ces éléments visent à rendre le travail des robots plus facile, en leur rendant votre page lisible, leur indiquant que, pour un ensemble de mot-clés donnés, votre page est la plus rapide, a le meilleur contenu, et est reconnue comme telle par ses pairs (liens qui pointent vers vous depuis l'extérieur). 
+Le plus votre site sera trouvé comme "bon" par les robots, le plus il remontera dans les résultats de recherche lorsqu'un potentiel client tapera une requête sur l'ensemble de mots-clés que vous visez.
+
+Lire aussi : 
+Pourquoi le SEO est important pour mon site web ? 
