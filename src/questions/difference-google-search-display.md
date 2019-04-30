@@ -12,7 +12,7 @@ Google Ads est divisé en deux réseaux : Search et Display.
 Lorsque vous lancez une campagne de publicité sur Google Ads, vous devez choisir l'un de ces deux réseaux car cela détermine le type de pub que vous faites. 
 
 ## Google Search
-1. Le réseau Search 
+1. Google Search = le moteur de recherche Google, tout simplement
 2. Pubs textuelles sous forme d'encart
 3. Apparaissent sur Google lors d'une recherche faite par un utilisateur sur les mots-clés que vous ciblez
 4. Très utiles pour des services qui doivent se faire trouver autour de besoins circonstanciels (p.ex un restaurant qui veut être trouvé lorsqu'une personne a faim, donc lorsqu'elle va chercher "restaurants à Lausanne" sur son téléphone pour répondre à son besoin). 
