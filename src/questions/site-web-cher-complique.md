@@ -3,7 +3,7 @@ slug: ‘site-web-cher-complique’
 date: 29/04/2019
 title: Un site web, est-ce toujours cher et compliqué ?
 tldr: Non, tout dépend de votre objectif et il n'est probablement pas si complexe que ça !
-tools: [Google Ads, Wordpress, Unbounce]
+tools: [Google Ads, Wordpress, Divi, Unbounce, Leadpages]
 goals: [“trafic”, “notoriete”]
 category: “webmarketing”
 ---
