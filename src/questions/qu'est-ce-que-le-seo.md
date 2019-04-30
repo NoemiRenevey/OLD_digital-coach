@@ -1,9 +1,9 @@
 ---
-slug: ‘qu'est-ce-que-le-seo’
+slug: ‘qu'est-ce-que-seo’
 date: 30/04/2019
 title: Qu'est-ce que le SEO ? 
 tldr: SEO = Search Engine Optimization, désigne les techniques pour être mieux référencés sur les moteurs de recherche web
-tools: [Wordpress]
+tools: [Google]
 goals: [“trafic”, “notoriete”]
 category: “webmarketing”
 ---
