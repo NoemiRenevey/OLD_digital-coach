@@ -1,0 +1,14 @@
+- id: track1
+ slug: mettre-en-place-essentiels-digitaux
+ name: Mettre en place les essentiels digitaux
+ excerpt: Mettez en place tout le nécessaire pour commencer votre activation digitale
+ thumbnail: ‘./img/thumbnail-flat.png’
+ description: La première étape de votre activation digitale est d’avoir les bons outils en places pour assurer un travail de qualité. Nous allons nous en occuper dans ce parcours (ou “Playlist”)
+ articles: [47f07166-04ae-4e9c-abbf-2e5ea48c4a85, 9e75346f-fd41-4980-ad10-aacf604e8428, ff0f5877-e21b-4835-8121-5a9fcbb81921]
+- id: track1
+ slug: mettre-en-place-essentiels-digitaux
+ name: Mettre en place les essentiels digitaux
+ excerpt: Mettez en place tout le nécessaire pour commencer votre activation digitale
+ thumbnail: ‘./img/thumbnail-flat.png’
+ description: La première étape de votre activation digitale est d’avoir les bons outils en places pour assurer un travail de qualité. Nous allons nous en occuper dans ce parcours (ou “Playlist”)
+ articles: [47f07166-04ae-4e9c-abbf-2e5ea48c4a85, 9e75346f-fd41-4980-ad10-aacf604e8428, ff0f5877-e21b-4835-8121-5a9fcbb81921]
